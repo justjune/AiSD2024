@@ -1,7 +1,7 @@
 
 #include <iostream>
 
-#define MAXV 20
+#define MAXV 100
 
 struct edgenode {
     int y;               // Вторая(конечная) точка ребра
