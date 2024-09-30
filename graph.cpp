@@ -24,21 +24,21 @@ void initialize_graph(graph *g, bool directed) {
     }
 }
 
-void insert_edge(graph *g, int x, int y, bool directed) {
+void insert_edge(graph *g, int x, int y, int w, bool directed) {
     if (x < 1 || x > g->nvertices || y < 1 || y > g->nvertices) {
         std::cout << "Ошибка: Вершины вне диапазона." << std::endl;
         return;
     }
 
     edgenode *p = new edgenode;  // Выделяем память для нового ребра
-    p->weight = 0;               // Устанавливаем вес
+    p->weight = w;               // Устанавливаем вес
     p->y = y;
     p->next = g->edges[x];
     g->edges[x] = p;  
     g->degree[x]++;
 
     if (!directed) {
-        insert_edge(g, y, x, true);
+        insert_edge(g, y, x, w, true);
     } else {
         g->nedges++;
     }
@@ -47,12 +47,13 @@ void insert_edge(graph *g, int x, int y, bool directed) {
 void read_graph(graph *g, bool directed) {
     int m;  // Количество ребер
     int x, y;  // Вершины между ребром
+    int w; // Вес ребра
     initialize_graph(g, directed);
     std::cin >> g->nvertices >> m;
 
     for (int i = 0; i < m; i++) {
-        std::cin >> x >> y;
-        insert_edge(g, x, y, directed);
+        std::cin >> x >> y >> w;
+        insert_edge(g, x, y, w, directed);
     }
 }
 
