@@ -41,9 +41,7 @@ void dijkstra(graph *g, int start){
     }
     
     for (int i = 1; i <= g->nvertices; i++) {
-        if (parent[i] != -1) {
-            std::cout << parent[i] << " - " << i << ": " << distance[i] << std::endl;
-        }
+        find_path(1, i, parent);
     }
     
 }
