@@ -1,6 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 #define MAXV 100
+#define MAXINT 100007
 
 struct edgenode {
     int y;               // Вторая(конечная) точка ребра
