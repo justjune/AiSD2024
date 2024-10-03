@@ -39,3 +39,9 @@ void union_sets(set_union *s, int s1, int s2) {
 bool same_component(set_union *s, int s1, int s2) {
     return (find(s, s1) == find(s, s2));
 }
+void print_set_union(set_union *s) {
+    for (int i = 1; i <= s->n; i++) {
+        std::cout << i <<" set=" << s->p[i] << " size=" << s->size[i]<< '\n';
+    }
+    std::cout << '\n';
+}
