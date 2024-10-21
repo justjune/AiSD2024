@@ -30,21 +30,32 @@ L101_022.o: L101_022.c
 L101_022test.o: L101_022test.c L101_022.h
 	$(CXX) -c L101_022test.c
 
-# Объекты для L664_217.exe
-l664217o=L664_217.o graph.o
+# Объекты для L604_217.exe
+l604217o=L604_217.cpp graph.cpp
 
-# Правило сборки L664_217.exe
-L664_217.exe: $(l664217o)
-	$(CXX) -o L664_217.exe $(l664217o)
+# Правило сборки L604_217.exe
+L604_217.exe: $(l604217o)
+	$(CXX) -o L604_217.exe $(l604217o)
 
-# Компиляция L664_217.o с зависимостью от заголовочного файла graph.h
-L664_217.o: L664_217.cpp graph.h
-	$(CXX) -c L664_217.cpp
+# Компиляция L604_217.o с зависимостью от заголовочного файла graph.h
+L604_217.o: L604_217.o graph.o
+	$(CXX) -c L604_217.cpp
 
 # Компиляция graph.o
 graph.o: graph.cpp
 	$(CXX) -c graph.cpp
 
+l610229o=L610_229.o graph.o
+L610_229.exe: $(l610229o)
+	$(CXX) -o L610_229.exe $(l610229o)
+
+# Компиляция L610_229.o с зависимостью от заголовочного файла graph.h
+L610_229.o: L610_229.cpp graph.h
+	$(CXX) -c L610_229.cpp
+
+# Компиляция graph.o
+graph.o: graph.cpp
+	$(CXX) -c graph.cpp
 .PHONY: clean
 clean:
-	$(RM) $(objects) $(l101022o) $(l664217o) m.exe L101022.exe L664_217.exe
+	$(RM) $(objects) $(l101022o) $(l664217o) ${l610229o} m.exe L101022.exe L604_217.exe L610_229.exe

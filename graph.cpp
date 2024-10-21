@@ -56,6 +56,15 @@ void read_graph(graph *g, bool directed) {
         insert_edge(g, x, y, w, directed);
     }
 }
+void find_path(int start, int end, int parents[])
+{
+	if ((start == end) || (end == -1))
+		std::cout << "\n"<< start;
+	else {
+		find_path(start,parents[end],parents);
+		std::cout << " "<< end;
+	}
+}
 
 void delete_edge(graph *g, int x, int y, bool directed) {
     edgenode *p = g->edges[x];
