@@ -64,6 +64,7 @@ void read_graph(graph *g, bool directed) {
     }
 }
 
+// Функуция для вывода наилучшего пути
 void find_path(int start, int end, int parents[])
 {
 	if ((start == end) || (end == -1))
