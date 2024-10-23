@@ -1,3 +1,4 @@
+//  Делягин Ф.О ПМ-201
 #ifndef SET_UNION_H
 #define SET_UNION_H
 
@@ -5,9 +6,9 @@
 #define SET_SIZE 1000
 
 struct set_union{
-    int p[SET_SIZE+1];    
-    int size[SET_SIZE+1];   
-    int n;                  
+    int p[SET_SIZE+1];    // Родительский элемент
+    int size[SET_SIZE+1];   // Количество элементов в поддереве i 
+    int n;                  // Количество элементов в множестве
 };
 
 
