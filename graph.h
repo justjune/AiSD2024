@@ -1,4 +1,4 @@
-// Делягин Ф.О
+// Делягин Ф.О ПМ-201
 #ifndef GRAPH_H
 #define GRAPH_H
 #define MAXV 100
