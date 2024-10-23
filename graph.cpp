@@ -1,4 +1,4 @@
-
+//  Делягин Ф.О ПМ-201
 #include "graph.h"
 #include <iostream>
 
@@ -32,7 +32,7 @@ void insert_edge(graph *g, int x, int y, int w, bool directed) {
 
     edgenode *p = new edgenode;  // Выделяем память для нового ребра
     p->weight = w;               // Устанавливаем вес
-    p->y = y;
+    p->y = y;			
     p->next = g->edges[x];
     g->edges[x] = p;  
     g->degree[x]++;
