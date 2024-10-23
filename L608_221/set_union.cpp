@@ -1,3 +1,4 @@
+// Делягин Ф.О ПМ-201
 #include <iostream>
 
 #include "./../set_union.h"
