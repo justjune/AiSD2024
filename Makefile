@@ -56,6 +56,23 @@ L610_229.o: L610_229.cpp graph.h
 # Компиляция graph.o
 graph.o: graph.cpp
 	$(CXX) -c graph.cpp
-.PHONY: clean
+l606219o=L606_219.o graph.o set_union.o
+L606_219.exe: $(l606219o)
+	$(CXX) -o L606_219.exe $(l606219o)
+L606_219.o: L606_219.cpp graph.cpp ./L608_221/set_union.cpp
+	$(CXX) -c L606_219.cpp
+
+# Компиляция graph.cpp в объектный файл
+graph.o: graph.cpp
+	$(CXX) -c graph.cpp
+
+# Компиляция set_union.cpp в объектный файл
+set_union.o: ./L608_221/set_union.cpp
+	$(CXX) -c ./L608_221/set_union.cpp
+#.PHONY: clean
 clean:
-	$(RM) $(objects) $(l101022o) $(l664217o) ${l610229o} m.exe L101022.exe L604_217.exe L610_229.exe
+	$(RM) $(objects) $(l101022o) $(l604217o) ${l606219o} ${l610229o} m.exe L101022.exe L604_217.exe L606_219.exe L610_229.exe
+
+
+
+
