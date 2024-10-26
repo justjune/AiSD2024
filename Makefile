@@ -1,35 +1,15 @@
+CXX = g++
+rm = del
+listing = L221_059
+function_name = selection_sort
+$(listing).exe : $(listing).o $(function_name).o
+	$(CXX) $(listing).o $(function_name).o -o $(listing)
 
-#Переопределение команды удаления файлов для Windows
-RM=del
-#Правило сборки исполняемого файла из объектных.
-#CXX - переменная для команды компилятора. (По умолчанию g++.)
-objects=m.o kva.o
+$(listing).o : $(listing).cpp
+	$(CXX) -c $(listing).cpp -o $(listing).o
 
-m.exe: $(objects)
-	$(CXX) -o m.exe $(objects)
-	
-#Правило компиляции исходного файла с завизимостью от заголовочного файла в объектный
-m.o: m.c kva.h
-	$(CXX) -c m.c
+$(function_name).o : $(function_name).cpp
+	$(CXX) -c $(function_name).cpp -o $(function_name).o
 
-#Правило компиляции исходного файла в объектный
-kva.o: kva.c
-	$(CXX) -c kva.c
-
-#Фиктивное правило для очистки каталога от созданных в процессе сборки файлов.
-#Для его вызова нужно указать clean после команды make.
-
-#Пример теста листинга 1.1 со стр. 22
-l101022o=L101_022.o L101_022test.o
-L101022.exe: $(l101022o)
-	$(CXX) -o L101022.exe $(l101022o)
-
-L101_022.o: L101_022.c
-	$(CXX) -c L101_022.c
-
-L101_022test.o: L101_022test.c L101_022.h
-	$(CXX) -c L101_022test.c
-
-.PHONY: clean
 clean:
-	$(RM) $(objects) $(l101022o) m.exe L101022.exe
+	$(rm) *.o $(listing).exe
