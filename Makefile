@@ -1,17 +1,15 @@
+CXX = g++
+rm = del
+listing = L221_059
+function_name = selection_sort
+$(listing).exe : $(listing).o $(function_name).o
+	$(CXX) $(listing).o $(function_name).o -o $(listing)
 
-#Переопределение команды удаления файлов для Windows
-RM=del
-#Правило сборки исполняемого файла из объектных.
-#CXX - переменная для команды компилятора. (По умолчанию g++.)
-m.exe: m.o
-	$(CXX) -o m.exe m.o
-	
-#Правило компиляции исходного файла в объектный
-m.o: m.c
-	$(CXX) -c m.c
+$(listing).o : $(listing).cpp
+	$(CXX) -c $(listing).cpp -o $(listing).o
 
-#Фиктивное правило для очистки каталога от созданных в процессе сборки файлов.
-#Для его вызова нужно указать clean после команды make.
-.PHONY: clean
+$(function_name).o : $(function_name).cpp
+	$(CXX) -c $(function_name).cpp -o $(function_name).o
+
 clean:
-	$(RM) m.o m.exe
+	$(rm) *.o $(listing).exe
