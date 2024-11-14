@@ -1,3 +1,5 @@
+// Садрисламов Реваль ПМ-201
+
 #include "graph.h"
 #include <iostream>
 
