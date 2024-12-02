@@ -1,51 +1,43 @@
-// Садрисламов Реваль ПМ-201
+// Садрисламов Рeваль ПМ-201
 
-#include <queue>
 #include <iostream>
+#include <queue>
+#include "graph.h" // Подключаем заголовочный файл с объявлением графа и функций
 
-// Пример заглушек для недостающих структур и функций
-struct Edgenode {
-    int y;
-    Edgenode *next;
-};
-
-struct Graph {
-    int nvertices;
-    bool directed;
-    Edgenode **edges;
-};
-
-bool *discovered;
-bool *processed;
-int *parent;
-
-void initialize_search(Graph *g) {
-    for (int i = 0; i < g->nvertices; i++) {
-        processed[i] = discovered[i] = false;
-        parent[i] = -1;
-    }
-}
-
+// Функции для обработки вершин и рёбер
 void process_vertex_early(int v) {
     std::cout << "Обработка вершины " << v << " на этапе раннего обхода\n";
-}
-
-void process_edge(int v, int y) {
-    std::cout << "Обработка ребра между вершинами " << v << " и " << y << "\n";
 }
 
 void process_vertex_late(int v) {
     std::cout << "Обработка вершины " << v << " на этапе позднего обхода\n";
 }
 
-// Основная функция обхода в ширину
-void bfs(Graph *g, int start) {
+void process_edge(int v, int y) {
+    std::cout << "Обработка ребра (" << v << ", " << y << ")\n";
+}
+
+// Объявляем массивы для отслеживания состояния вершин
+bool processed[MAXV + 1];    // Отмечает, обработана ли вершина
+bool discovered[MAXV + 1];   // Отмечает, обнаружена ли вершина
+int parent[MAXV + 1];        // Родительская вершина для каждой вершины
+
+// Инициализация поиска
+void initialize_search(graph *g) {
+    for (int i = 1; i <= g->nvertices; i++) {
+        processed[i] = discovered[i] = false;
+        parent[i] = -1;
+    }
+}
+
+// Обход графа в ширину (BFS)
+void bfs(graph *g, int start) {
     initialize_search(g);       // Инициализация поиска перед началом обхода в ширину
 
     std::queue<int> q;          // Очередь для вершин, которые нужно обработать
     int v;                      // Текущая вершина
     int y;                      // Смежная (следующая) вершина
-    Edgenode *p;                // Временный указатель для обхода ребер
+    edgenode *p;                // Временный указатель для обхода рёбер
 
     q.push(start);              // Добавляем стартовую вершину в очередь
     discovered[start] = true;   // Помечаем стартовую вершину как обнаруженную
@@ -68,7 +60,7 @@ void bfs(Graph *g, int start) {
             
             // Если смежная вершина еще не была обнаружена
             if (!discovered[y]) {
-                q.push(y);          // Добавляем ее в очередь
+                q.push(y);          // Добавляем её в очередь
                 discovered[y] = true; // Помечаем как обнаруженную
                 parent[y] = v;       // Устанавливаем текущую вершину как родителя
             }
@@ -80,34 +72,14 @@ void bfs(Graph *g, int start) {
     }
 }
 
-// Главная функция
 int main() {
-    // Здесь инициализируем тестовый граф для демонстрации
-    int n = 5;  // Число вершин
-    Graph g;
-    g.nvertices = n;
-    g.directed = false;
+    graph g;
+    bool directed = false;
 
-    // Выделение памяти для массивов состояния вершин
-    discovered = new bool[n];
-    processed = new bool[n];
-    parent = new int[n];
-    g.edges = new Edgenode*[n];
+    read_graph(&g, directed);
 
-    for (int i = 0; i < n; i++) {
-        g.edges[i] = nullptr;
-    }
-
-    // Здесь можно добавить ребра в граф для тестирования
-
-    // Выполнение обхода графа в ширину, начиная с вершины 0
-    bfs(&g, 0);
-
-    // Освобождение памяти
-    delete[] discovered;
-    delete[] processed;
-    delete[] parent;
-    delete[] g.edges;
+    // Запуск обхода в ширину с вершины 1
+    bfs(&g, 1);
 
     return 0;
 }
