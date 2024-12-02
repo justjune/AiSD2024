@@ -1,3 +1,4 @@
+// Делягин Ф.О ПМ-201
 #ifndef GRAPH_H
 #define GRAPH_H
 #define MAXV 100
@@ -16,10 +17,12 @@ struct graph {
     int nedges;                  // Количество ребер
     bool directed;               // Ориентированный граф?
 };
+
 void print_graph(graph *g);
 void initialize_graph(graph *g, bool directed);
 void insert_edge(graph *g, int x, int y, int w, bool directed);
 void read_graph(graph *g, bool directed);
 void delete_edge(graph *g, int x, int y, bool directed);
+
 void find_path(int start, int end, int parents[]);
 #endif
