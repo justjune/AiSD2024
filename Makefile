@@ -88,7 +88,15 @@ graph.o: graph.cpp
 	$(CXX) -c graph.cpp
 
 
+l111022o=L111_022.o insertion_sort.o
+L111_022.exe: $(l111022o)
+	$(CXX) -o L111_022.exe $(l111022o) # здесь должен быть TAB
+L111_022.o: L111_022.cpp insertion_sort.cpp
+	$(CXX) -c L111_022.cpp # здесь тоже TAB
 
+# Компиляция insertion_sort.cpp в объектный файл
+insertion_sort.o: insertion_sort.cpp
+	$(CXX) -c insertion_sort.cpp # здесь также TAB
 
 .PHONY: clean
 clean:
