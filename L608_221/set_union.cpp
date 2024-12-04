@@ -1,8 +1,9 @@
+// Делягин Ф.О ПМ-201
 #include <iostream>
 
 #include "./../set_union.h"
 
-void set_union_init(set_union *s, int n) {
+void set_union_init(set_union *s, int n) { // задаем пустое дерево
     for (int i = 1; i <= n; i++) {
         s->p[i] = i;
         s->size[i] = 1;
@@ -10,12 +11,16 @@ void set_union_init(set_union *s, int n) {
     s->n = n;
 }
 
+// Функция для поиска корня дерево, содержащий елемент x
 int find(set_union *s, int x) {
+    // если мы в родительском элеменьте то просто возвращаем метку
     if (s->p[x] == x) {
         return(x);
     }
-    return(find(s, s->p[x]));
+    return(find(s, s->p[x])); // переходим по родительским элементам пока это возиожно
 }
+
+// Функция для связки корня одного из деревьев
 void union_sets(set_union *s, int s1, int s2) {
     int r1, r2; 
 
