@@ -88,6 +88,9 @@ graph.o: graph.cpp
 	$(CXX) -c graph.cpp
 
 
+
+
+
 l111022o=L111_022.o insertion_sort.o
 L111_022.exe: $(l111022o)
 	$(CXX) -o L111_022.exe $(l111022o) # здесь должен быть TAB
