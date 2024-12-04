@@ -2,8 +2,10 @@
 #Переопределение команды удаления файлов для Windows
 RM=del
 #Правило сборки исполняемого файла из объектных.
+
+
 #CXX - переменная для команды компилятора. (По умолчанию g++.)
-objects=m.o kva.o
+objects=m.o kva.o 
 
 m.exe: $(objects)
 	$(CXX) -o m.exe $(objects)
@@ -56,6 +58,8 @@ L610_229.o: L610_229.cpp graph.h
 # Компиляция graph.o
 graph.o: graph.cpp
 	$(CXX) -c graph.cpp
+
+
 l606219o=L606_219.o graph.o set_union.o
 L606_219.exe: $(l606219o)
 	$(CXX) -o L606_219.exe $(l606219o)
@@ -69,10 +73,37 @@ graph.o: graph.cpp
 # Компиляция set_union.cpp в объектный файл
 set_union.o: ./L608_221/set_union.cpp
 	$(CXX) -c ./L608_221/set_union.cpp
-#.PHONY: clean
+
+
+l558189o=L558_189.o graph.o
+L558_189.exe: $(l558189o)
+	$(CXX) -o L558_189.exe $(l558189o)
+
+# Компиляция L558_189.o с зависимостью от заголовочного файла graph.h
+L558_189.o: L558_189.cpp graph.h
+	$(CXX) -c L558_189.cpp
+
+# Компиляция graph.o
+graph.o: graph.cpp
+	$(CXX) -c graph.cpp
+
+
+
+
+
+
+l111022o=L111_022.o insertion_sort.o
+L111_022.exe: $(l111022o)
+	$(CXX) -o L111_022.exe $(l111022o) # здесь должен быть TAB
+L111_022.o: L111_022.cpp insertion_sort.cpp
+	$(CXX) -c L111_022.cpp # здесь тоже TAB
+
+# Компиляция insertion_sort.cpp в объектный файл
+insertion_sort.o: insertion_sort.cpp
+	$(CXX) -c insertion_sort.cpp # здесь также TAB
+
+.PHONY: clean
 clean:
 	$(RM) $(objects) $(l101022o) $(l604217o) ${l606219o} ${l610229o} m.exe L101022.exe L604_217.exe L606_219.exe L610_229.exe
-
-
 
 

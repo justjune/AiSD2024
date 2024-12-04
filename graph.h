@@ -17,10 +17,12 @@ struct graph {
     int nedges;                  // Количество ребер
     bool directed;               // Ориентированный граф?
 };
-void print_graph(graph *g); //Функция для вывода графа 
-void initialize_graph(graph *g, bool directed); //Функция для задания графа
-void insert_edge(graph *g, int x, int y, bool directed); //Функция для добавления ребра
-void read_graph(graph *g, bool directed); // Функция для чтения графа
-void delete_edge(graph *g, int x, int y, bool directed); // Функция для удаления ребра
+
+void print_graph(graph *g);
+void initialize_graph(graph *g, bool directed);
+void insert_edge(graph *g, int x, int y, int w, bool directed);
+void read_graph(graph *g, bool directed);
+void delete_edge(graph *g, int x, int y, bool directed);
+
 void find_path(int start, int end, int parents[]);
 #endif
