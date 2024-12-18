@@ -1,12 +1,12 @@
-#ifndef L808_303_h
-#define L808_303_h
-
-#include L812_307.h
-#include L807_302.h
-#include L811_307.h
-#include L806_301.h
+#include "L812_307.hpp"
+#include "L807_302.hpp"
+#include "L811_307.hpp"
+#include "L806_301.hpp"
 
 goal_cell(char *s, char *t, int *i, int *j);
+match(char *s, char *t);
+indel(char *s);
+
 
 int string_compare(char *s, char *t)
 {
@@ -29,5 +29,3 @@ int string_compare(char *s, char *t)
 	goal_cell(s, t, &i, &j);
 	return (m[i][j].cost);
 }
-
-#endif //L808_303_h

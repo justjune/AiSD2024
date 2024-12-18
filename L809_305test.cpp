@@ -1,6 +1,8 @@
-#include L809_305.h
-#include L808_303.h
+#include "L809_305.hpp"
+#include "L808_303.hpp"
 #include <iostream>
+
+using namespace std;
 
 int string_compare(char *s, char *t);
 void reconstruct_path(char *s, char *t, int i, int j)

@@ -1,10 +1,13 @@
-#include L806_301.h
-#include L807_302.h
-#include L813_307.h //не готов, не мой
+#ifndef L809_305_h
+#define L809_305_h
 
-match_out(char *s, char *t, int i, int j);
-insert_out(char *t, int j);
-delete_out(char *s, int i);
+#include "L806_301.hpp"
+#include "L807_302.hpp"
+#include "L813_307.hpp" //не готов, не мой
+
+match_out(char s, char t, int i, int j);
+insert_out(char t, int j);
+delete_out(char s, int i);
 
 reconstruct_path(char *s, char *t, int i, int j)
 {
@@ -25,3 +28,5 @@ reconstruct_path(char *s, char *t, int i, int j)
 		return;
 	}
 }
+
+#endif //L809_305_h

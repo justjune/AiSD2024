@@ -1,6 +1,8 @@
-#include L810_306.h
+#include "L810_306.hpp"
 #include <iostream>
 
+using namespace std;
+ 
 void row_init (int i);
 void column_init (int i);
 

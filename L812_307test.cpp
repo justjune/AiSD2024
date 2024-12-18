@@ -1,5 +1,7 @@
-#include L812_307.h
+#include "L812_307.hpp"
 #include <iostream>
+
+using namespace std;
 
 void goal_cell(char *s, char *t, int *i, int *j);
 

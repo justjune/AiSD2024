@@ -1,8 +1,8 @@
 #ifndef L810_306_h
 #define L810_306_h
 
-#include L806_301.h
-#include L807_302.h
+#include "L806_301.hpp"
+#include "L807_302.hpp"
 
 row_init (int i) //Изменён в L814_308.h
 {

@@ -1,5 +1,7 @@
-#include L807_302.h
+#include "L807_302.hpp"
 #include <iostream>
+
+using namespace std;
 
 int main () {
     m[0][0].cost   = 1;

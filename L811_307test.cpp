@@ -1,5 +1,7 @@
-#include L811_307.h
+#include "L811_307.hpp"
 #include <iostream>
+
+using namespace std;
 
 int match(char c, char d);
 int indel (char c);
