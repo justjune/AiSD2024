@@ -1,4 +1,5 @@
 
+
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=gcc
 
@@ -11,6 +12,7 @@ else
 	EXT=
 
 endif
+
 #Правило сборки исполняемого файла из объектных.
 
 #CXX - переменная для команды компилятора. (По умолчанию g++.)
@@ -99,17 +101,43 @@ graph.o: graph.cpp
 
 
 
-
+#L111_022
 
 l111022o=L111_022.o insertion_sort.o
 L111_022.exe: $(l111022o)
-	$(CXX) -o L111_022.exe $(l111022o) # здесь должен быть TAB
+	$(CXX) -o L111_022.exe $(l111022o)
 L111_022.o: L111_022.cpp insertion_sort.cpp
-	$(CXX) -c L111_022.cpp # здесь тоже TAB
+	$(CXX) -c L111_022.cpp 
 
 # Компиляция insertion_sort.cpp в объектный файл
 insertion_sort.o: insertion_sort.cpp
-	$(CXX) -c insertion_sort.cpp # здесь также TAB
+	$(CXX) -c insertion_sort.cpp
+
+# L110_034
+l110034o=L110_034.o increment.o
+L110_034.exe: $(l110034o)
+	$(CXX) -o L110_034.exe $(l110034o) 
+L110_034.o: L110_034.cpp increment.cpp	
+	$(CXX) -c L110_034.cpp 
+
+# Компиляция insertion_sort.cpp в объектный файл
+increment.o: increment.cpp
+	$(CXX) -c increment.cpp 
+
+# L221_059
+l221059o=L221_059.o selection_sort.o
+L221_059.exe: $(l221059o)
+	$(CXX) -o L221_059.exe $(l221059o) 
+L221_059.o: L221_059.cpp selection_sort.cpp	
+	$(CXX) -c L221_059.cpp 
+
+# Компиляция selection_sort.cpp в объектный файл
+selection_sort.o: selection_sort.cpp
+	$(CXX) -c selection_sort.cpp 
+
+
+
+
 
 l513189o=L513_189.o L509_187.o graph.o
 L513_189.exe: $(l513189o)
