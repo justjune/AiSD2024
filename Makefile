@@ -1,8 +1,19 @@
 
- #Переопределение команды удаления файлов для Windows
-RM=del
-#Правило сборки исполняемого файла из объектных.
 
+# Определение компилятора (gcc для Linux, g++ для Windows)
+CXX=gcc
+
+# Определение команды удаления и расширение файла в зависимости от ОС
+ifeq ($(OS),Windows_NT)
+	RM=del
+	EXT=.exe
+else
+	RM=rm
+	EXT=
+
+endif
+
+#Правило сборки исполняемого файла из объектных.
 
 #CXX - переменная для команды компилятора. (По умолчанию g++.)
 objects=m.o kva.o 
@@ -75,13 +86,13 @@ set_union.o: ./L608_221/set_union.cpp
 	$(CXX) -c ./L608_221/set_union.cpp
 
 
-l558189o=L558_189.o graph.o
-L558_189.exe: $(l558189o)
-	$(CXX) -o L558_189.exe $(l558189o)
+l509187o=L509_187.o graph.o
+L509_187.exe: $(l509187o)
+	$(CXX) -o L509_187.exe $(l509187o)
 
 # Компиляция L558_189.o с зависимостью от заголовочного файла graph.h
-L558_189.o: L558_189.cpp graph.h
-	$(CXX) -c L558_189.cpp
+L509_187.o: L509_187.cpp graph.h
+	$(CXX) -c L509_187.cpp
 
 # Компиляция graph.o
 graph.o: graph.cpp
@@ -128,6 +139,20 @@ selection_sort.o: selection_sort.cpp
 
 
 
+l513189o=L513_189.o L509_187.o graph.o
+L513_189.exe: $(l513189o)
+	$(CXX) -o L513_189.exe $(l513189o)
+
+L513_189.o: L513_189.cpp L509_187.cpp
+	$(CXX) -c L513_189.cpp
+
+# Компиляция L509_187.o с зависимостью от заголовочного файла graph.h
+L509_187.o: L509_187.cpp graph.h
+	$(CXX) -c L509_187.cpp
+
+# Компиляция graph.o
+graph.o: graph.cpp
+	$(CXX) -c graph.cpp
 .PHONY: clean
 clean:
 	$(RM) $(objects) $(l101022o) $(l604217o) ${l606219o} ${l610229o} m.exe L101022.exe L604_217.exe L606_219.exe L610_229.exe
