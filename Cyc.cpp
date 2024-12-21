@@ -1,3 +1,6 @@
+// Cадрисламов Реваль ПМ-201
+
+
 #include <iostream>
 #include <vector>
 #include <stack>
