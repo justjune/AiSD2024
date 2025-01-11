@@ -49,6 +49,7 @@ EJF.o: EJF.cpp
 
 
 
+<<<<<<< HEAD
 
 #L904_346
 L904_346o = L904_346.o EJF.o
@@ -58,6 +59,20 @@ L904_346.o: L904_346.cpp
 	$(CXX) -c L904_346.cpp
 EJF.o: EJF.cpp
 	$(CXX) -c EJF.cpp
+=======
+# L110_034
+l110034o=L110_034.o increment.o
+L110_034.exe: $(l110034o)
+	$(CXX) -o L110_034.exe $(l110034o) 
+L110_034.o: L110_034.cpp increment.cpp 
+	$(CXX) -c L110_034.cpp 
+
+# Компиляция ins
+increment.o: increment.cpp
+	$(CXX) -c increment.cpp 
+
+
+>>>>>>> 08b27f0aca69e6a69af7dca1ed5b04e1df5e6527
 
 
 .PHONY: clean
