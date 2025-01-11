@@ -59,6 +59,7 @@ int main() {
     vector<int> cover = setCover(subsets, U);
 
     // Вывод результата
+    
     printCover(cover);
 
     return 0;
