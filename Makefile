@@ -3,7 +3,7 @@ CXX=gcc
 
 # Определение команды удаления и расширение файла в зависимости от ОС
 ifeq ($(OS),Windows_NT)
-	RM=del
+RM=del
 	EXT=.exe
 else
 	RM=rm
@@ -38,6 +38,20 @@ L101_022.o: L101_022.c
 
 L101_022test.o: L101_022test.c L101_022.h
 	$(CXX) -c L101_022test.c
+#L909_373
+L909_373o = L909_373.o EJF.o
+L909_373.exe: $(L909_373o)
+	$(CXX) -o L909_373.exe $(L909_373o)
+L909_373.o: L909_373.cpp
+	$(CXX) -c L909_373.cpp
+EJF.o: EJF.cpp
+	$(CXX) -c EJF.cpp
+# Clean
+.PHONY: clean
+clean:
+	$(RM) $(L909_373o) L909_373.exe
+
+
 
 .PHONY: clean
 clean:
