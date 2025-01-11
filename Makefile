@@ -53,6 +53,20 @@ clean:
 
 
 
+# L110_034
+l110034o=L110_034.o increment.o
+L110_034.exe: $(l110034o)
+	$(CXX) -o L110_034.exe $(l110034o) 
+L110_034.o: L110_034.cpp increment.cpp 
+	$(CXX) -c L110_034.cpp 
+
+# Компиляция ins
+increment.o: increment.cpp
+	$(CXX) -c increment.cpp 
+
+
+
+
 .PHONY: clean
 clean:
 	$(RM) $(objects) $(l101022o) m.exe L101022.exe
