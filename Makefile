@@ -46,11 +46,17 @@ L909_373.o: L909_373.cpp
 	$(CXX) -c L909_373.cpp
 EJF.o: EJF.cpp
 	$(CXX) -c EJF.cpp
-# Clean
-.PHONY: clean
-clean:
-	$(RM) $(L909_373o) L909_373.exe
 
+
+
+#L904_346
+L904_346o = L904_346.o EJF.o
+L904_346.exe: $(L904_346o)
+	$(CXX) -o L904_346.exe $(L904_346o)
+L904_346.o: L904_346.cpp
+	$(CXX) -c L904_346.cpp
+EJF.o: EJF.cpp
+	$(CXX) -c EJF.cpp
 
 
 .PHONY: clean
