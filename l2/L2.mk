@@ -33,3 +33,20 @@ $(mat2).o : $(mat2).cpp
 
 clean:
 	$(rm) *.o $(spp2).exe
+
+
+#L225_066
+
+start = L225_066
+func = pusk
+$(start).exe : $(start).o $(func).o
+	$(CXX) $(start).o $(func).o -o $(start)
+
+$(start).o : $(start).cpp
+	$(CXX) -c $(start).cpp -o $(start).o
+
+$(func).o : $(func).cpp
+	$(CXX) -c $(func).cpp -o $(func).o
+
+clean:
+	$(rm) *.o $(start).exe
