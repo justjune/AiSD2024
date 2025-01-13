@@ -1,19 +1,39 @@
 # # L402_132reval!
 RM = del
-# # Имя исполняемого файла
+
 TARGET = L402_132reval
-# # Исходные файлы
+
 SRCS = L402_132.cpp L402_132reval.cpp
-# # Объектные файлы
+
 OBJS = $(SRCS:.cpp=.o)
 
-# # Линковка объектных файлов в исполняемый файл
 $(TARGET): $(OBJS)
 	$(CXX) $(OBJS) -o $(TARGET).exe
 
-# # Правило для компиляции .cpp в .o
+
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+
+
+#L403_133.cpp
+
+TARGET = L403_133
+
+SRCS =  L403_133.cpp obj.cpp L402_132.cpp
+
+OBJS = $(SRCS:.cpp=.o)
+
+all: $(TARGET) clean
+
+$(TARGET): $(OBJS)
+	$(CXX) $(OBJS) -o $(TARGET)
+
+
+%.o: %.cpp$(CXX) $(CXXFLAGS) -c $< -o $@
+
+
+
 
 
 
