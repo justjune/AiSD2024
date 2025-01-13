@@ -171,6 +171,18 @@ L612_233.o: L612_233.cpp graph.h
 graph.o: graph.cpp
 	$(CXX) -c graph.cpp
 
+#L617_243
+l617243o=L617_243.o graph.o
+L617_243.exe: $(l617243o)
+	$(CXX) -o L617_243.exe $(l617243o)
+
+# Компиляция L617_243.o с зависимостью от заголовочного файла graph.h
+L617_243.o: L617_243.cpp graph.h
+	$(CXX) -c L617_243.cpp
+
+# Компиляция graph.o
+graph.o: graph.cpp
+	$(CXX) -c graph.cpp
 
 .PHONY: clean
 clean:
