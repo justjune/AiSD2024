@@ -50,3 +50,20 @@ $(func).o : $(func).cpp
 
 clean:
 	$(rm) *.o $(start).exe
+
+
+#L222_060
+
+L22 = L222_060
+func2 = rebut
+$(L22).exe : $(L22).o $(func2).o
+	$(CXX) $(L22).o $(func2).o -o $(L22)
+
+$(L22).o : $(L22).cpp
+	$(CXX) -c $(L22).cpp -o $(L22).o
+
+$(func2).o : $(func2).cpp
+	$(CXX) -c $(func2).cpp -o $(func2).o
+
+clean:
+	$(rm) *.o $(L22).exe
