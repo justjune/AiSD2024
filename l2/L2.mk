@@ -1,19 +1,28 @@
+
+
+#L222_060
 CXX = g++
 rm = del
-listing = L221_059
-function_name = selection_sort
-# Правило сборки исполняемого файла
-$(listing).exe: $(listing).o $(function_name).o
-	$(CXX) $(listing).o $(function_name).o -o $(listing).exe
 
-# Правило сборки объектного файла для L221_059.cpp
-$(listing).o: $(listing).cpp selection_sort.h
-	$(CXX) -c $(listing).cpp -o $(listing).o
+cou = L222_060
+sor = rebut
+$(cou).exe : $(cou).o $(sor).o
+	$(CXX) $(cou).o $(sor).o -o $(cou)
 
-# Правило сборки объектного файла для selection_sort.cpp
-$(function_name).o: $(function_name).cpp selection_sort.h
-	$(CXX) -c $(function_name).cpp -o $(function_name).o
+$(cou).o : $(cou).cpp
+	$(CXX) -c $(cou).cpp -o $(cou).o
 
-# Очистка всех скомпилированных файлов
+$(sor).o : $(sor).cpp
+	$(CXX) -c $(sor).cpp -o $(sor).o
+
 clean:
-	$(rm) *.o $(listing).exe
+	$(rm) *.o $(cou).exe
+
+
+
+
+
+
+
+
+
