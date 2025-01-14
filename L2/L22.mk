@@ -1,4 +1,4 @@
-#L222_060
+
 CXX = g++
 rm = del
 
@@ -15,4 +15,5 @@ $(sor).o : $(sor).cpp
 
 clean:
 	$(rm) *.o $(cou).exe
+
 
