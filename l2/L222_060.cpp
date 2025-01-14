@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <ctime>
 
-
 void customSort(int array[], int size);
 
 int main() {
