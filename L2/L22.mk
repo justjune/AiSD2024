@@ -1,20 +1,19 @@
+
 CXX = g++
-RM = del
-LISTING = L222_060
-FUNCTION_NAME = myfunc
+rm = del
 
-# Сборка исполняемого файла
-$(LISTING).exe : $(LISTING).o $(FUNCTION_NAME).o
-	$(CXX) $(LISTING).o $(FUNCTION_NAME).o -o $(LISTING).exe
+cou = L222_060
+sor = rebut
+$(cou).exe : $(cou).o $(sor).o
+	$(CXX) $(cou).o $(sor).o -o $(cou)
 
-# Компиляция объектного файла программы
-$(LISTING).o : $(LISTING).cpp
-	$(CXX) -c $(LISTING).cpp -o $(LISTING).o
+$(cou).o : $(cou).cpp
+	$(CXX) -c $(cou).cpp -o $(cou).o
 
-# Компиляция объектного файла функции
-$(FUNCTION_NAME).o : $(FUNCTION_NAME).cpp $(FUNCTION_NAME).h
-	$(CXX) -c $(FUNCTION_NAME).cpp -o $(FUNCTION_NAME).o
+$(sor).o : $(sor).cpp
+	$(CXX) -c $(sor).cpp -o $(sor).o
 
-# Очистка
 clean:
-	$(RM) *.o $(LISTING).exe
+	$(rm) *.o $(cou).exe
+
+
