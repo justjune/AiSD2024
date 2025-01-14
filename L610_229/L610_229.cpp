@@ -1,5 +1,5 @@
 //  Делягин Ф.О ПМ-201
-#include "graph.h"
+#include "../graph.h"
 #include <iostream>
 void dijkstra(graph *g, int start){
    bool intree[MAXV +1];      // Вершина уже в дереве?
