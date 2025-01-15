@@ -1,6 +1,7 @@
 RM=del
 CXX=g++
 
+
 L807_303o = L807_303.o lfuk.o
 
 L807_303.exe: $(L807_303o)

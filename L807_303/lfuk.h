@@ -1,6 +1,7 @@
 #ifndef LFUK_H
 #define LFUK_H
 
+
 #include <vector>
 
 // Структура для ячейки таблицы

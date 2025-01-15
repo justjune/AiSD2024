@@ -1,6 +1,7 @@
 #include "lfuk.h"
 #include <vector>
 
+
 // Определение глобальной таблицы динамического программирования
 std::vector<std::vector<Cell>> m;
 
