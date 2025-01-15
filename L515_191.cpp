@@ -1,90 +1,85 @@
 #include <iostream>
-#include <vector>
 #include <queue>
+#include "../graph.h" // Подключаем заголовочный файл с объявлением графа и функций
+#define UNCOLORED   0   // Константа для обозначения неокрашенной вершины
+#define WHITE       1   // Константа для обозначения белой вершины
+#define BLACK       2   // Константа для обозначения черной вершины
 
-#define UNCOLORED 0
-#define WHITE 1
-#define BLACK 2
+using namespace std;
 
-struct graph {
-    int nvertices;                      // Число вершин в графе
-    std::vector<std::vector<int>> edges; // Список смежности для хранения графа
-};
+int color[MAXV+1];      // Массив цветов для каждой вершины графа
+bool bipartite;         // Флаг, показывающий, является ли граф двудольным
 
-std::vector<int> color;                 // Цвета вершин
-std::vector<bool> discovered;           // Метка для отслеживания посещения вершины
-bool bipartite;                         // Флаг для проверки двудольности графа
+// Возвращает цвет, противоположный текущему
+int complement(int color) {
+    if (color == WHITE) {
+        return(BLACK);
+    }
 
-void initialize_search(const graph &g) {
-    color.assign(g.nvertices + 1, UNCOLORED);
-    discovered.assign(g.nvertices + 1, false);
+    if (color == BLACK) {
+        return(WHITE);
+    }
+	
+    return(UNCOLORED);
+}
+void process_vertex_early(int v) {
+    std::cout << "Обработка вершины " << v << " на этапе раннего обхода\n";
 }
 
+void process_vertex_late(int v) {
+    std::cout << "Обработка вершины " << v << " на этапе позднего обхода\n";
+}
+
+// Обрабатывает ребро между двумя вершинами
 void process_edge(int x, int y) {
+    // Если соседние вершины имеют одинаковый цвет, граф не двудольный
     if (color[x] == color[y]) {
         bipartite = false;
-        std::cout << "Warning: not bipartite due to (" << x << ", " << y << ")\n";
     }
-    color[y] = (color[x] == WHITE) ? BLACK : WHITE;
+
+    // Назначаем соседу противоположный цвет
+    color[y] = complement(color[x]);
 }
+bool processed[MAXV + 1];    // Отмечает, обработана ли вершина
+bool discovered[MAXV + 1];   // Отмечает, обнаружена ли вершина
+int parent[MAXV + 1];        // Родительская вершина для каждой вершины
 
-void bfs(const graph &g, int start) {
-    std::queue<int> q;
-    q.push(start);
-    discovered[start] = true;
+// Инициализация поиска
 
-    while (!q.empty()) {
-        int v = q.front();
-        q.pop();
-
-        for (int neighbor : g.edges[v]) {
-            if (!discovered[neighbor]) {
-                discovered[neighbor] = true;
-                process_edge(v, neighbor);
-                q.push(neighbor);
-            } else {
-                process_edge(v, neighbor);
-            }
-        }
-    }
-}
-
+// Основная функция для проверки двудольности графа
 void twocolor(graph *g) {
-    // Счетчик
-    for (int i = 1; i <= g->nvertices; i++) {
+    // Ставим всем вершинам статус "неокрашена"
+    for (int i = 1; i <= (g->nvertices); i++) { 
         color[i] = UNCOLORED;
     }
 
-    bipartite = true;
-    initialize_search(*g);
+    bipartite = true; // Предполагаем, что граф двудольный
 
-    for (int i = 1; i <= g->nvertices; i++) {
-        if (!discovered[i]) {
-            color[i] = WHITE;
-            bfs(*g, i);
+    initialize_search(g); // Инициализируем поиск
+
+    // Проверяем каждую компоненту графа
+    for (int i = 1; i <= (g->nvertices); i++) {
+        if (discovered[i] == false) { // Если вершина еще не была обработана
+            color[i] = WHITE; // Начинаем с окрашивания первой вершины в белый цвет
+            bfs(g, i); // Запускаем BFS для текущей компоненты
         }
     }
 }
 
 int main() {
-    graph g;
-    g.nvertices = 5;
-    g.edges = {
-        {},             // 0-я вершина (не используется)
-        {2, 3},         // 1-я вершина соединена с 2 и 3
-        {1, 4},         // 2-я вершина соединена с 1 и 4
-        {1, 5},         // 3-я вершина соединена с 1 и 5
-        {2},            // 4-я вершина соединена с 2
-        {3}             // 5-я вершина соединена с 3
-    };
+    graph g; // Объект графа
+    int i;
 
-    twocolor(&g);
+    read_graph(&g, false); // Считываем граф (неориентированный граф)
+    print_graph(&g); // Выводим граф для проверки
 
-    if (bipartite) {
-        std::cout << "Graph is bipartite.\n";
-    } else {
-        std::cout << "Graph is not bipartite.\n";
+    twocolor(&g); // Проверяем двудольность графа
+
+    // Выводим цвета всех вершин
+    for (i = 1; i <= (g.nvertices); i++) {
+        cout << ' ' << color[i];
     }
+    cout << '\n';
 
-    return 0;
+    return 0; // Завершаем выполнение программы
 }
