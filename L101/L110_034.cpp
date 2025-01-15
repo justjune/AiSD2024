@@ -13,22 +13,6 @@
 // Если y == 0, возвращает 1.
 // Если y нечетное, возвращает 2^k, где k - целая часть log2(y).
 // Если y четное, вызывает функцию increment из increment.cpp.
-int Increment(int y) {
-    if (y < 0) {
-        std::cerr << "Error: A negative number has been entered." << std::endl;
-        return -1; // Возвращаем -1 как код ошибки
-    }
-    if (y == 0) {
-        return 1;
-    } else if (y % 2 == 1) {
-        // Вычисляем 2^k, где k - целая часть логарифма по основанию 2 от y
-        int k = static_cast<int>(std::floor(std::log2(y)));
-        return static_cast<int>(std::pow(2, k));
-    } else {
-        // Вызываем функцию increment() из increment.cpp для четных чисел
-        return increment(y);
-    }
-}
 
 int main() {
     int y;
