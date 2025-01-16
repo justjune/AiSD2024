@@ -1,3 +1,4 @@
+/*Гамбург Алиса. Заголовочный файл для функции EarlirdtJobFirft*/
 #ifndef EJF_H
 #define EJF_H
 

@@ -1,3 +1,4 @@
+/*Гамбург Алиса. Заголовочный файл для функции ClosestPair*/
 #ifndef CP_H
 #define CP_H
 

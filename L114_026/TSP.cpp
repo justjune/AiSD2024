@@ -1,3 +1,5 @@
+/*Гамбург Алиса. Данный файл содержит все исходники, содержащие объявление функций 
+из программы OptimalTSP*/
 #include "TSP.h"
 #include <cmath>
 #include <algorithm>

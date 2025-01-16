@@ -1,3 +1,5 @@
+/*Гамбург Алиса. Данный файл содержит все исходники, содержащие объявление функций 
+из программы insertion_sort*/
 #include <iostream>
 #include "insertion_sort.h"
 using namespace std;

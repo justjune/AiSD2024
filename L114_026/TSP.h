@@ -1,3 +1,4 @@
+/*Алиса Гамбург. Заголовочный файл для OptimalTSP*/
 #ifndef TSP_H
 #define TSP_H
 

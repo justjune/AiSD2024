@@ -1,3 +1,4 @@
+/*Гамбург Алиса. Заголовочный файл для программы ShortestJobFirst*/
 #ifndef SJF_H
 #define SJF_H
 

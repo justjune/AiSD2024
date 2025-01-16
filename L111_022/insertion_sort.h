@@ -1,3 +1,4 @@
+/*Гамбург Алиса. Заголовочный файл для функции сортировки вставками insertion_sort*/
 #ifndef INSERTION_SORT_H
 #define INSERTION_SORT_H
 

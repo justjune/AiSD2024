@@ -1,3 +1,5 @@
+/*Гамбург Алиса. Данный файл содержит все исходники, содержащие объявление функций 
+из программы ClosestPair*/
 #include "CP.h"
 #include <cmath>
 #include <algorithm>

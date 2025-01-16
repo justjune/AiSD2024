@@ -1,5 +1,5 @@
 CXX = g++
-rm = del
+rm = rm
 listing = L115_027
 function_name = EJF
 $(listing).exe : $(listing).o $(function_name).o
