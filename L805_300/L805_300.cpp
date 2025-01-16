@@ -4,6 +4,7 @@
 #include "anka.h"
 
 
+
 int main() {
     int n, m;
 
