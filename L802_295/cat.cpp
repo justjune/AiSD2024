@@ -1,5 +1,6 @@
 #include "cat.h"
 
+
 long f[MAXN + 1]; // Массив для хранения вычисленных значений Fibonacci
 
 
