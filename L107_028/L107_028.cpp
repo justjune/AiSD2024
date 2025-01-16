@@ -1,3 +1,6 @@
+// Мустафина Анна
+// файл с функцией main для тестирования
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
