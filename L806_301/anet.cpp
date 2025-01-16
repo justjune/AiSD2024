@@ -6,6 +6,8 @@ int indel(char c) {
 }
 
 
+
+
 int match(char c1, char c2) {
     return (c1 == c2) ? 0 : 1; // Стоимость совпадения или замены символа
 }
