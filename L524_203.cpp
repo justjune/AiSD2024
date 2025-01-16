@@ -51,15 +51,3 @@ void topsort(vector<vector<int>>& graph, vector<int>& discovered, vector<int>& p
     cout << endl;
 }
 
-int main() {
-    vector<vector<int>> graph; 
-
-    vector<int> discovered(graph.size(), false);
-    vector<int> parent(graph.size(), -1);
-    vector<int> entry_time(graph.size(), 0);
-    bool finished = false;
-
-    topsort(graph, discovered, parent, finished, entry_time);
-
-    return 0;
-}
