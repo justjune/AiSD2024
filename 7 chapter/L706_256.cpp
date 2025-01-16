@@ -1,8 +1,9 @@
+
 #include <iostream>
 #include <vector>
 using namespace std;
 
-const int NMAX = 100; // Максимальный размер массива
+const int NMAX = 100; // ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г»Г© Г°Г Г§Г¬ГҐГ° Г¬Г Г±Г±ГЁГўГ 
 
 void process_solution(int a[], int k) {
     for (int i = 0; i <= k; i++) {
@@ -12,7 +13,7 @@ void process_solution(int a[], int k) {
 }
 
 bool is_a_solution(int a[], int k, int n) {
-    return (k == n - 1); // k начинаем с 0, поэтому условие на n - 1
+    return (k == n - 1); // k Г­Г Г·ГЁГ­Г ГҐГ¬ Г± 0, ГЇГ®ГЅГІГ®Г¬Гі ГіГ±Г«Г®ГўГЁГҐ Г­Г  n - 1
 }
 
 void backtrack(int a[], int k, int n) {
@@ -24,31 +25,31 @@ void backtrack(int a[], int k, int n) {
             bool found = false;
             for (int j = 0; j <= k; j++) {
                 if (a[j] == i) {
-                    found = true; // Проверка, не используется ли элемент
+                    found = true; // ГЏГ°Г®ГўГҐГ°ГЄГ , Г­ГҐ ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІГ±Гї Г«ГЁ ГЅГ«ГҐГ¬ГҐГ­ГІ
                     break;
                 }
             }
             if (!found) {
-                a[k + 1] = i; // Добавляем новый элемент
-                backtrack(a, k + 1, n); // Рекурсивный вызов
+                a[k + 1] = i; // Г„Г®ГЎГ ГўГ«ГїГҐГ¬ Г­Г®ГўГ»Г© ГЅГ«ГҐГ¬ГҐГ­ГІ
+                backtrack(a, k + 1, n); // ГђГҐГЄГіГ°Г±ГЁГўГ­Г»Г© ГўГ»Г§Г®Гў
             }
         }
     }
 }
 
 void generate_permutations(int n) {
-    int a[NMAX]; // Вектор решений
-    backtrack(a, -1, n); // Начинаем с k = -1
+    int a[NMAX]; // Г‚ГҐГЄГІГ®Г° Г°ГҐГёГҐГ­ГЁГ©
+    backtrack(a, -1, n); // ГЌГ Г·ГЁГ­Г ГҐГ¬ Г± k = -1
 }
 
 void check_test(int n, const vector<string>& expected_permutations) {
     vector<string> actual_permutations;
     streambuf* original_cout = cout.rdbuf();
-    cout.rdbuf(original_cout); //замена cout
+    cout.rdbuf(original_cout); //Г§Г Г¬ГҐГ­Г  cout
     generate_permutations(n);
-    cout.rdbuf(original_cout); //восстанавливаем cout
+    cout.rdbuf(original_cout); //ГўГ®Г±Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ cout
 
-    //сравниваем expected_permutations и actual_permutations;
+    //Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ expected_permutations ГЁ actual_permutations;
     for (size_t i = 0; i < expected_permutations.size(); i++) {
         if (i < actual_permutations.size() && actual_permutations[i] != expected_permutations[i]) {
             cout << "the test failed: the expected permutation does not match the received one." << endl;
@@ -60,7 +61,7 @@ void check_test(int n, const vector<string>& expected_permutations) {
 }
 
 void test_generate_permutations() {
-    // Пример 1
+    // ГЏГ°ГЁГ¬ГҐГ° 1
     int n1 = 3;
     vector<string> expected1 = {
         "1 2 3",
@@ -72,7 +73,7 @@ void test_generate_permutations() {
     };
     check_test(n1, expected1);
 
-    // Пример 2
+    // ГЏГ°ГЁГ¬ГҐГ° 2
     int n2 = 2;
     vector<string> expected2 = {
         "1 2",
