@@ -2,6 +2,7 @@ CXX = g++
 CXXFLAGS = -Wall -std=c++17
 
 
+
 all: L803_297
 
 L803_297: L803_297.o dog.o
