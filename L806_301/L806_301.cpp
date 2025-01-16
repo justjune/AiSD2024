@@ -5,6 +5,7 @@
 int main() {
     std::string s, t;
 
+
     std::cout << "Enter the first line: ";
     std::cin >> s;
 

@@ -1,6 +1,7 @@
 //Севостьянова Анна МХ-201
 
 // библиотека
+
 #include <iostream>
 #include "lak.h"
 

@@ -2,6 +2,7 @@
 
 const int MAXN = 1000; 
 
+
 long binomial_coefficient(int n, int m) {
     long bc[MAXN][MAXN] = {0};
 

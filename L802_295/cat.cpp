@@ -2,6 +2,7 @@
 
 long f[MAXN + 1]; // Массив для хранения вычисленных значений Fibonacci
 
+
 long fib_c(int n) {
     if (f[n] == UNKNOWN) {
         f[n] = fib_c(n - 1) + fib_c(n - 2);

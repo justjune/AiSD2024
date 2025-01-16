@@ -1,5 +1,6 @@
 #include "dog.h"
 
+
 long fib_dp(int n) {
     int i;                   
     long f[MAXN + 1];        // Массив 

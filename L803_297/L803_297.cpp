@@ -3,6 +3,7 @@
 #include <iostream>
 #include "dog.h"
 
+
 int main() {
     int n;
 

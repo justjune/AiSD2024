@@ -1,6 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++17
 
+
 all: L802_295
 
 L802_295: L802_295.o cat.o

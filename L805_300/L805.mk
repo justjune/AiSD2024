@@ -3,6 +3,7 @@ CXXFLAGS = -Wall -std=c++17
 
 all: L805_300
 
+
 L805_300: L805_300.o anka.o
 	$(CXX) $(CXXFLAGS) -o L805_300 L805_300.o anka.o
 
