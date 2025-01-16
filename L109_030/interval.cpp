@@ -1,3 +1,8 @@
+// Мустафина Анна
+// реализация функций compareIntervals (сравнивает интервалы по начальным точкам),
+// isOverlapping (проверяет, пересекаются ли 2 интервала) и ExhaustiveScheduling 
+// (находит максимальный набор непересекающихся интервалов методом полного перебора)
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
