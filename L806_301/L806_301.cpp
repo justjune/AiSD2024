@@ -1,6 +1,23 @@
+#include "L811_307.hpp"
+#include "L806_301.hpp"
+#include <iostream>
+
+using namespace std;
+
 #define MATCH 0
 #define INSERT 1
 #define DELETE 2
+
+int match(char c, char d)
+{
+	if (c==d) return 0;
+	else return 1;
+}
+
+int indel (char c)
+{
+	return 1;
+}
 
 int string_compare(char *s, char *t int i, int j)
 {
@@ -15,4 +32,8 @@ int string_compare(char *s, char *t int i, int j)
     for (int k=INSERT; k<=DELETE; k++)
         if (opt[k] < lowest_cost) lowest_cost = opt[k];
         return lowest_cost;
+}
+
+int main () {
+    /*ghtlcnfdbv? xnj pltcm rjl*/
 }

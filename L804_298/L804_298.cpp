@@ -1,3 +1,8 @@
+#include "L804_298.hpp"
+#include <iostream>
+
+using namespace std;
+
 long fib_ultimate(int n) 
 {
     long back2=0, back1=1;
@@ -9,4 +14,8 @@ long fib_ultimate(int n)
         back1 = next;
     }
     return back1 + back2;
+}
+
+int main () {
+    cout<<fib_ultimate(5);
 }

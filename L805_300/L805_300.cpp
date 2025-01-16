@@ -1,4 +1,9 @@
-#include "L802_296.hpp"
+#include "L805_300.hpp"
+#include <iostream>
+
+using namespace std;
+
+#define MAXN 45
 
 long binomial_coefficient(n, m)
 {
@@ -9,4 +14,13 @@ long binomial_coefficient(n, m)
         for (int j=1; j<i; j++)
             bc[i][j] = bc[i-1][j-1] + bc[i-1][j];
     return bc[n][m];
+}
+
+int main() {
+    int n, m;
+    cout<<"choose n"<<endl;
+    cin>>n;
+    cout<<"choose the number of coefficient"<<endl;
+    cin>>m;
+    cout<<binomial_coefficient(n,m);
 }

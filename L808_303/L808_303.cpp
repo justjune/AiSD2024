@@ -2,11 +2,37 @@
 #include "L807_302.hpp"
 #include "L811_307.hpp"
 #include "L806_301.hpp"
+#include "L808_303.hpp"
+#include <iostream>
 
-goal_cell(char *s, char *t, int *i, int *j);
-match(char *s, char *t);
-indel(char *s);
+using namespace std;
 
+#define MATCH 0
+#define INSERT 1
+#define DELETE 2
+#define MAXLEN 2 // Изменяемое значение, которое Скиена не задал в этом параграфе
+
+typedef struct {
+	int cost; /* Стоимость попадания в данную ячейку*/
+	int parent; /* Родительская ячейка*/
+} cell;
+
+goal_cell(char *s, char *t, int *i, int *j) //Изменён в L814_308.h
+{
+	*i = strlen(s)-1;
+	*j = strlen(t)-1;
+}
+
+int match(char c, char d)
+{
+	if (c==d) return 0;
+	else return 1;
+}
+
+int indel (char c)
+{
+	return 1;
+}
 
 int string_compare(char *s, char *t)
 {
@@ -28,4 +54,17 @@ int string_compare(char *s, char *t)
 	}
 	goal_cell(s, t, &i, &j);
 	return (m[i][j].cost);
+}
+
+int main () {
+    const char* a="cr";
+    const char* b="lf";
+    for (size_t i=0; i<MAXLEN; ++i)
+    {
+        for (size_t j=0; j<MAXLEN; ++j)
+        {
+            m[i][j]=i+j;
+        }
+    }
+    cout<<string_compare(a, b);
 }
