@@ -5,6 +5,8 @@
 #include <iostream>
 #include "shok.h"
 
+
+
 int main() {
     int n;
     std::cout << "Enter the Fibonacci term you want to compute: ";// Выводит пользователю текстовое сообщение

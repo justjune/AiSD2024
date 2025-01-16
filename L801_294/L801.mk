@@ -1,8 +1,8 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++17
 
-all: L801_294
 
+all: L801_294
 
 L801_294: L801_294.o shok.o
 	$(CXX) $(CXXFLAGS) -o L801_294 L801_294.o shok.o
