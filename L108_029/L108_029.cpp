@@ -1,3 +1,6 @@
+// Мустафина Анна
+// файл с основной программой
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
