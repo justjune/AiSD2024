@@ -1,3 +1,6 @@
+// Мустафина Анна
+// файл с основной программой
+
 #include "interval.h"
 #include <algorithm>
 #include <vector>
