@@ -9,6 +9,7 @@ SRCS = L908_368.cpp L908.cpp
 # Объектные файлы
 OBJS = $(SRCS:.cpp=.o)
 
+
 # Правило сборки исполняемого файла
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)

@@ -5,6 +5,7 @@
 #include <set>
 using namespace std;
 
+
 // Объявление функции VertexCover
 void VertexCover(vector<pair<int, int>> edges);
 

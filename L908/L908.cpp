@@ -3,6 +3,7 @@
 #include <set>
 #include "l908.h"
 
+
 using namespace std;
 
 // Функция для поиска приближенного вершины покрытия графа
