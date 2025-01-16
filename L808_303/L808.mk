@@ -5,6 +5,7 @@ all: L808_303
 
 L808_303: L808_303.o ant.o
 	$(CXX) $(CXXFLAGS) -o L808_303 L808_303.o ant.o
+	
 
 L808_303.o: L808_303.cpp ant.h
 	$(CXX) $(CXXFLAGS) -c L808_303.cpp

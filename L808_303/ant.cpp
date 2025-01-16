@@ -54,6 +54,7 @@ int string_compare(const char* s, const char* t) {
                 }
             }
         }
+        
     }
 
     // Возвращаем итоговую стоимость

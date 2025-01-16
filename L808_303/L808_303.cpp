@@ -4,6 +4,7 @@
 #include <string>
 #include "ant.h"
 
+
 int main() {
     std::string s, t;
 

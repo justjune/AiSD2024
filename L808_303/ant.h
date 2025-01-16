@@ -8,4 +8,5 @@ struct Cell {
 
 int string_compare(const char* s, const char* t);
 
+
 #endif // ANT_H
