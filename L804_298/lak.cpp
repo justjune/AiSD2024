@@ -1,6 +1,7 @@
 #include "lak.h"
 
 
+
 long fib_ultimate(int n) {
     int i;  // Счетчик
     long back2 = 0, back1 = 1;  // Последние два значения f[n]

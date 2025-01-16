@@ -5,6 +5,7 @@
 #include <iostream>
 #include "lak.h"
 
+
 int main() {
     int n;
 
