@@ -1,51 +1,75 @@
 #include "L310_099.hpp"
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
 using namespace std;
 
+void print_tree(Tree* root, ofstream& out, string prefix = "", bool isLeft = false){
+    if(root == nullptr) return;
+    
+    out << prefix;
+    
+    if(prefix.empty()){
+        out << "(root) ";
+    }
+    else if(isLeft){
+        out << "(L) ";
+    }
+    else{
+        out << "(R) ";
+    }
+    
+    out << root->data << '\n';
+    
+    print_tree(root->left, out, prefix + " ", true);
+    print_tree(root->right, out, prefix + " ", false);
+}
+
 int main() {
-    Tree* root = nullptr;
-    // Вставка первого "корневого" элемента
-    root = insert(root, 7);
-
-
-    if (root == nullptr or root->data != 7) {
-        cout << "Error: Node does not exist or has an invalid value" << '\n';
+    
+    Tree* root = NULL;
+    string filename = "test.txt";
+    ifstream file;
+    file.open(filename);
+    
+    if(!file.is_open()){
+        cout << "Error" << '\n';
+        return 0;
     }
-    else {
-        cout << "Success: Node added with value:" << root->data << '\n';
+    
+    string line, last_line;
+    vector <int> tree_list;
+    
+    while(getline(file,line)){
+        last_line = line;
     }
-
-    root = insert(root, 5);
-    root = insert(root, 160);
-    root = insert(root, 13);
-
-
-    if (root->right == nullptr or root->right->data != 160) {
-        cout << "Error: Node does not exist or has an invalid value" << '\n';
+    
+    stringstream string_stream(last_line);
+    string tree_el;
+    
+    while(getline(string_stream,tree_el,',')){
+        tree_list.push_back(stoi(tree_el));
     }
-    else {
-        cout << "Success: Node added with value:" << root->right->data << '\n';
-    }
-
-
-    if (root->left == nullptr or root->left->data != 5) {
-        cout << "Error: Node does not exist or has an invalid value" << '\n';
-    }
-    else {
-        cout << "Success: Node added with value:" << root->left->data << '\n';
-    }
-
-
-    if (root->right->left == nullptr or root->right->left->data != 13) {
-        cout << "Error: Node does not exist or has an invalid value" << '\n';
-    }
-    else {
-        cout << "Success: Node added with value:" << root->right->left->data << '\n';
+    
+    file.close();
+    
+    for(int num : tree_list){
+        root = insert(root, num);
     }
 
-    cout << "All tests passed" << '\n';
-    //Удаление бинарного дерева
+    string out_name = "test_out.txt";
+    ofstream out_file;
+    out_file.open(out_name);
+    
+    if(!out_file.is_open()){
+        cout << "Error" << '\n';
+        return 0;
+    }
+
+    print_tree(root,out_file);
+    
+    out_file.close();
     delete_tree(root);
-
     return 0;
 }
