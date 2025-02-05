@@ -1,0 +1,14 @@
+Finding an node with a value: 7
+Node with value 7 found
+Finding an node with a value: 5
+Node with value 5 found
+Finding an node with a value: 160
+Node with value 160 found
+Finding an node with a value: 13
+Node with value 13 found
+Finding an node with a value: 142
+Node with value 142 found
+Finding an node with a value: 2532
+Node with value 2532 found
+Finding an node with a value: 2123
+Node with value 2123 found

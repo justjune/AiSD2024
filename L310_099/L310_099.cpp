@@ -1,7 +1,7 @@
-// Ãàðåíñêèõ Ñåìåí, ÌÅÍ-233202. Àëãîðèòì âñòàâêè ýëåìåíòà â áèíàðíîå äåðåâî, ñòðàíèöà 99 ëèñòèíã 3.10
+// Ð“Ð°Ñ€ÐµÐ½ÑÐºÐ¸Ñ… Ð¡ÐµÐ¼ÐµÐ½, ÐœÐ•Ð-233202. ÐÐ»Ð³Ð¾Ñ€Ð¸Ñ‚Ð¼ Ð²ÑÑ‚Ð°Ð²ÐºÐ¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð² Ð±Ð¸Ð½Ð°Ñ€Ð½Ð¾Ðµ Ð´ÐµÑ€ÐµÐ²Ð¾, ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° 99 Ð»Ð¸ÑÑ‚Ð¸Ð½Ð³ 3.10
 #include "L310_099.hpp"
 
-Tree* create_tree(Tree* parent, int item) { // Ñîçäàíèå áèíàðíîãî äåðåâà
+Tree* create_tree(Tree* parent, int item) { // Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð±Ð¸Ð½Ð°Ñ€Ð½Ð¾Ð³Ð¾ Ð´ÐµÑ€ÐµÐ²Ð°
     Tree* node = new Tree;
     node->parent = parent;
     node->data = item;
@@ -10,7 +10,7 @@ Tree* create_tree(Tree* parent, int item) { // Ñîçäàíèå áèíàðíîãî äåðåâà
     return node;
 }
 
-Tree* insert(Tree* root, int item) { // Ôóíêöèÿ âñòàâêè ýëåìåíòà â áèíàðíîå äåðåâî
+Tree* insert(Tree* root, int item) { // Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²ÑÑ‚Ð°Ð²ÐºÐ¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð² Ð±Ð¸Ð½Ð°Ñ€Ð½Ð¾Ðµ Ð´ÐµÑ€ÐµÐ²Ð¾
     if (root == nullptr) {
         return create_tree(nullptr, item);
     }
@@ -35,9 +35,10 @@ Tree* insert(Tree* root, int item) { // Ôóíêöèÿ âñòàâêè ýëåìåíòà â áèíàðíîå äåðå
     return root;
 }
 
-void delete_tree(Tree* root) { //Óäàëåíèå äåðåâà
+void delete_tree(Tree* root) { //Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð´ÐµÑ€ÐµÐ²Ð°
     if (root == nullptr) return;
     delete_tree(root->right);
     delete_tree(root->left);
     delete root;
 }
+
