@@ -9,7 +9,7 @@ int main() {
     cout << "Test: start testing L203_068\n";
     cout << "Не имеет совпадений: Строка \"asda\", Паттерн \"ds\", Результат: " << findmatch("ds", "asda") << endl;
     cout << "Имеет совпадений: Строка \"asda\", Паттерн \"sd\", Результат: " << findmatch("sd", "asda") << endl;
-
+    cout << "Test: test L203_068 finished\n";
 
     return 0;
 }
