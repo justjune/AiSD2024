@@ -1,8 +1,8 @@
 //  Делягин Ф.О ПМ-201
-#include "../graph.h"
+#include "../graph.hpp"
 #include <iostream>
 void dijkstra(graph *g, int start){
-   bool intree[MAXV +1];      // Вершина уже в дереве?
+    bool intree[MAXV +1];      // Вершина уже в дереве?
     int distance[MAXV +1];    // Расстояние вершины от начала
     int parent[MAXV +1];      // Родительский элемент
     int v = start;            // Текущая вершина

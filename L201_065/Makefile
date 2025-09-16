@@ -1,3 +1,4 @@
+
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=g++
 
@@ -11,17 +12,18 @@ else
 
 endif
 
-l610229o=L610_229.o ../graph.o
-L610_229.exe: $(l610229o)
-	$(CXX) -o L610_229.exe $(l610229o)
 
-L610_229.o: L610_229.cpp
-	$(CXX) -c L610_229.cpp
+objects=L201_065.o L201_065test.o
+L201_065.exe: $(objects)
+	$(CXX) -o L201_065.exe $(objects) 
 
-# Компиляция graph.o
-graph.o: ../graph.cpp
-	$(CXX) -c ../graph.cpp
+L201_065.o: L201_065.cpp
+	$(CXX) -c L201_065.cpp 
+
+L201_065test.o: L201_065test.cpp L201_065.hpp
+	${CXX} -c L201_065test.cpp
+
 
 .PHONY: clean
 clean:
-	$(RM) ${l610229o} L610_229.exe
+	${RM} ${objects} L201_065.exe
