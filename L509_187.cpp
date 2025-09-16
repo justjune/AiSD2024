@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <queue>
-#include "graph.h" // Подключаем заголовочный файл с объявлением графа и функций
+#include "graph.hpp" // Подключаем заголовочный файл с объявлением графа и функций
 
 // Функции для обработки вершин и рёбер
 void process_vertex_early(int v) {

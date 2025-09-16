@@ -2,8 +2,8 @@
 
 
 #include <iostream>
-#include "graph.h"     // Заголовочный файл для работы с графом
-#include "set_union.h" // Заголовочный файл для работы с объединением множеств (set union)
+#include "graph.hpp"     // Заголовочный файл для работы с графом
+#include "set_union.hpp" // Заголовочный файл для работы с объединением множеств (set union)
 
 struct edge_pair {
     int x, y;      // Вершины, которые соединяет ребро
