@@ -65,10 +65,8 @@ int main(){
     res = matrix_multiply(a,b);
     for (int i = 0; i < res.rows; i++){
         for (int j = 0; j < res.cols; j++){
-            cout <<"   " <<  i << ' ' << j << "   ";
             cout<< res(i,j)<< ' ';
         }
-        cout << "сука пидорас";
         cout << endl;
         
     }
