@@ -13,19 +13,19 @@ else
 endif
 
 
-objects=L517_194.o L517_194test.o graph.o
-L517_194.exe: $(objects)
-	$(CXX) -o L517_194.exe $(objects) 
+objects=L509_187.o L509_187test.o graph.o
+L509_187.exe: $(objects)
+	$(CXX) -o L509_187.exe $(objects) 
 
-L517_194.o: L517_194.cpp
-	$(CXX) -c L517_194.cpp 
+L509_187.o: L509_187.cpp
+	$(CXX) -c L509_187.cpp 
 
-L517_194test.o: L517_194test.cpp L517_194.hpp
-	${CXX} -c L517_194test.cpp
+L509_187test.o: L509_187test.cpp L509_187.hpp
+	${CXX} -c L509_187test.cpp
 
 graph.o: ../graph.cpp
 	$(CXX) -c ../graph.cpp
 
 .PHONY: clean
 clean:
-	${RM} ${objects} L517_194.exe
+	${RM} ${objects} L509_187.exe

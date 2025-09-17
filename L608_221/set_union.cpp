@@ -1,7 +1,7 @@
 // Делягин Ф.О ПМ-201
 #include <iostream>
 
-#include "./../set_union.h"
+#include "../set_union.hpp"
 
 void set_union_init(set_union *s, int n) { // задаем пустое дерево
     for (int i = 1; i <= n; i++) {

@@ -2,7 +2,8 @@
 
 #include <iostream>
 #include <queue>
-#include "graph.hpp" // Подключаем заголовочный файл с объявлением графа и функций
+#include "../graph.hpp" // Подключаем заголовочный файл с объявлением графа и функций
+#include "L509_187.hpp"
 
 // Функции для обработки вершин и рёбер
 void process_vertex_early(int v) {
@@ -13,7 +14,7 @@ void process_vertex_late(int v) {
     std::cout << "Обработка вершины " << v << " на этапе позднего обхода\n";
 }
 
-void process_edge(int v, int y) {
+static void process_edge(int v, int y) {
     std::cout << "Обработка ребра (" << v << ", " << y << ")\n";
 }
 
@@ -28,10 +29,12 @@ void initialize_search(graph *g) {
         processed[i] = discovered[i] = false;
         parent[i] = -1;
     }
+
+
 }
 
 // Обход графа в ширину (BFS)
-void bfs(graph *g, int start) {
+void bfs(graph *g, int start, void (*pe)(int, int)= process_edge) {
     initialize_search(g);       // Инициализация поиска перед началом обхода в ширину
 
     std::queue<int> q;          // Очередь для вершин, которые нужно обработать
@@ -55,7 +58,7 @@ void bfs(graph *g, int start) {
             
             // Обрабатываем ребро, если смежная вершина еще не была обработана
             if (!processed[y] || g->directed) {
-                process_edge(v, y);  // Обработка ребра
+                pe(v, y);  // Обработка ребра
             }
             
             // Если смежная вершина еще не была обнаружена
@@ -72,14 +75,3 @@ void bfs(graph *g, int start) {
     }
 }
 
-int main() {
-    graph g;
-    bool directed = false;
-
-    read_graph(&g, directed);
-
-    // Запуск обхода в ширину с вершины 1
-    bfs(&g, 1);
-
-    return 0;
-}

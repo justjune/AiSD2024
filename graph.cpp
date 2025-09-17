@@ -1,5 +1,5 @@
 //  Делягин Ф.О ПМ-201
-#include "graph.h"
+#include "graph.hpp"
 #include <iostream>
 
 //Функция для вывода графа 

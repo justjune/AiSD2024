@@ -1,5 +1,5 @@
 //Ткаченко Илья ПМ-201
-#include "graph.h"
+#include "graph.hpp"
 #include <iostream>
 
 // Функция для нахождения ребра между двумя вершинами x и y в графе
