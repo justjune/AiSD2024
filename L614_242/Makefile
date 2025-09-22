@@ -12,17 +12,19 @@ else
 endif
 
 
-objects=L808_303.o L808_303test.o
-L808_303.exe: $(objects)
-	$(CXX) -o L808_303.exe $(objects) 
+objects=L614_242.o L614_242test.o graph.o
+L614_242.exe: $(objects)
+	$(CXX) -o L614_242.exe $(objects) 
 
-L808_303.o: L808_303.cpp
-	$(CXX) -c L808_303.cpp 
+L614_242.o: L614_242.cpp
+	$(CXX) -c L614_242.cpp 
 
-L808_303test.o: L808_303test.cpp L808_303.hpp
-	${CXX} -c L808_303test.cpp
+L614_242test.o: L614_242test.cpp L614_242.hpp
+	${CXX} -c L614_242test.cpp
 
+graph.o: ../graph.cpp
+	$(CXX) -c ../graph.cpp
 
 .PHONY: clean
 clean:
-	${RM} ${objects} L808_303.exe
+	${RM} ${objects} L614_242.exe

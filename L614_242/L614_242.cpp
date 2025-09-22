@@ -3,37 +3,7 @@
     #include <vector>
     #include <queue>//очередь
     #include <climits>//библиотека для определния пределов целочисленных типов (INT_MAX)
-
-    struct Edge {//структура для ребра графа(вершина,макс.пропускная способность ребра,текущий поток через ребро)
-        int to, capacity, flow;
-    };
-
-    class FlowGraph {//определяем граф потока,принимаем количество вершин и инициализируем вектор adj, который будет хранить список смежности.
-    public:
-        FlowGraph(int vertices) : adj(vertices) {}
-
-        void addEdge(int from, int to, int capacity) {//Метод addEdge добавляет ребро между двумя вершинами from и to с заданной пропускной способностью.
-            adj[from].push_back({ to, capacity, 0 });
-            adj[to].push_back({ from, 0, 0 }); //Также создаётся обратное ребро с нулевой пропускной способностью, что необходимо для алгоритма Форда-Фалкерсона.
-        }
-
-        const std::vector<Edge>& getAdj(int vertex) const {
-            return adj[vertex];//Метод getAdj возвращает список рёбер, исходящих из заданной вершины vertex.
-        }
-
-        std::vector<Edge>& getAdj(int vertex) {
-            //Перегруженный метод getAdj, который возвращает ссылку на список рёбер (без const)
-            return adj[vertex];//позволяя изменять рёбра при необходимости.
-        }
-
-        int size() const {//Метод size возвращает количество вершин в графе.
-            return adj.size();
-        }
-
-    private:
-        std::vector<std::vector<Edge>> adj;
-    };//определили класс
-
+    #include "L614_242.hpp"
 
     //поиск в ширину
     //Функция bfs выполняет обход в ширину для поиска увеличивающего пути от source до sink.
@@ -109,22 +79,3 @@
         return maxFlow;//Возвращаем максимальный поток после завершения алгоритма.
     }
 
-    int main() {//В main создаём экземпляр графа с 6 вершинами
-        setlocale(LC_ALL, "RU");
-        FlowGraph g(6); // Пример: 6 вершин
-        g.addEdge(0, 1, 16);
-        g.addEdge(0, 2, 13);
-        g.addEdge(1, 2, 10);
-        g.addEdge(1, 3, 12);
-        g.addEdge(2, 1, 4);
-        g.addEdge(2, 4, 14);
-        g.addEdge(3, 2, 9);
-        g.addEdge(3, 5, 20);
-        g.addEdge(4, 3, 7);
-        g.addEdge(4, 5, 4);
-
-        int maxFlow = netflow(g, 0, 5);
-        std::cout << "Максимальный поток: " << maxFlow << std::endl;
-
-        return 0;
-    }

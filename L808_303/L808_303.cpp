@@ -1,5 +1,5 @@
 //Pozdin Konstantin Pm-201
-#include "zagolovok.cpp"
+#include "L808_303.hpp"
 #include <iostream>
 #include <cstring> // Для strlen
 
@@ -78,15 +78,3 @@ int string_compare(const char* s, const char* t) {
     return m[i][j].cost;
 }
 
-// Пример использования
-int main() {
-    const char s[] = "kitten";
-    const char t[] = "sitting";
-
-    int cost = string_compare(s, t);
-
-    std::cout << "Стоимость редактирования строки \"" << s
-              << "\" в строку \"" << t << "\": " << cost << std::endl;
-
-    return 0;
-}

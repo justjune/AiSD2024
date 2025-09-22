@@ -1,10 +1,13 @@
 //  Делягин Ф.О ПМ-201
-#include "../graph.hpp"
 #include <iostream>
+#include "../graph.hpp"
+#include "L610_229.hpp"
+
+bool intree[MAXV +1];      // Вершина уже в дереве?
+int distance[MAXV +1];    // Расстояние вершины от начала
+int parent[MAXV +1];      // Родительский элемент
+
 void dijkstra(graph *g, int start){
-    bool intree[MAXV +1];      // Вершина уже в дереве?
-    int distance[MAXV +1];    // Расстояние вершины от начала
-    int parent[MAXV +1];      // Родительский элемент
     int v = start;            // Текущая вершина
     int w;                    // кандидат на следующую вершину
     int weight;               // Вес ребра
@@ -45,17 +48,4 @@ void dijkstra(graph *g, int start){
         }
     }
     
-    // находим наилучшие пути от начала для всех вершин
-    for (int i = 1; i <= g->nvertices; i++) {
-        find_path(start, i, parent);
-    }
-    
-}
-int main() {
-    graph g;
-    read_graph(&g, false);
-    int start = 3;
-    dijkstra(&g, start);
-
-    return 0;
 }

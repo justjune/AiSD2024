@@ -12,19 +12,21 @@ else
 endif
 
 
-objects=L610_229.o L610_229test.o graph.o
-L610_229.exe: $(objects)
-	$(CXX) -o L610_229.exe $(objects) 
+objects=L606_219.o L606_219test.o graph.o set_union.o
+L606_219.exe: $(objects)
+	$(CXX) -o L606_219.exe $(objects) 
 
-L610_229.o: L610_229.cpp
-	$(CXX) -c L610_229.cpp 
+L606_219.o: L606_219.cpp
+	$(CXX) -c L606_219.cpp 
 
-L610_229test.o: L610_229test.cpp L610_229.hpp
-	${CXX} -c L610_229test.cpp
+L606_219test.o: L606_219test.cpp L606_219.hpp
+	${CXX} -c L606_219test.cpp
 
 graph.o: ../graph.cpp
 	$(CXX) -c ../graph.cpp
+set_union.o: ../L608_221/set_union.cpp
+	$(CXX) -c ../L608_221/set_union.cpp
 
 .PHONY: clean
 clean:
-	${RM} ${objects} L610_229.exe
+	${RM} ${objects} L606_219.exe

@@ -1,13 +1,16 @@
 // Садрисламов Реваль ПМ-201
 
-#include "graph.hpp"
+#include "../graph.hpp"
+#include "L604_217.hpp"
 #include <iostream>
+
+bool intree[MAXV + 1];      // Массив, определяющий, включена ли вершина в дерево
+int distance[MAXV + 1];      // Массив для хранения минимального расстояния до вершины
+int parent[MAXV + 1];        // Массив для хранения родительской вершины
 
 // Реализация алгоритма Прима для поиска минимального остовного дерева (MST)
 void prim(graph *g, int start) {
-    bool intree[MAXV + 1];      // Массив, определяющий, включена ли вершина в дерево
-    int distance[MAXV + 1];      // Массив для хранения минимального расстояния до вершины
-    int parent[MAXV + 1];        // Массив для хранения родительской вершины
+    
     int v = start;               // Текущая вершина
     int dist, w, weight;
 
@@ -49,44 +52,4 @@ void prim(graph *g, int start) {
             }
         }
     }
-
-    // Выводим минимальные пути для каждой вершины
-    for (int i = 1; i <= g->nvertices; i++) {
-        find_path(1, i, parent);  // Функция для нахождения пути от начальной вершины до вершины i
-    }
-}
-
-int main() {
-    graph g;
-
-    // Закомментированный код для ручного ввода графа 
-    // g.nvertices = 5;
-    // g.edges.resize(g.nvertices + 1, nullptr);
-
-    // // Вершина 1
-    // g.edges[1] = new Edge{2, 10, nullptr};
-    // g.edges[1] = new Edge{3, 5, g.edges[1]};
-
-    // // Вершина 2
-    // g.edges[2] = new Edge{1, 10, nullptr};
-    // g.edges[2] = new Edge{4, 1, g.edges[2]};
-
-    // // Вершина 3
-    // g.edges[3] = new Edge{1, 5, nullptr};
-    // g.edges[3] = new Edge{4, 7, g.edges[3]};
-
-    // // Вершина 4
-    // g.edges[4] = new Edge{2, 1, nullptr};
-    // g.edges[4] = new Edge{3, 7, g.edges[4]};
-    // g.edges[4] = new Edge{5, 2, g.edges[4]};
-
-    // // Вершина 5
-    // g.edges[5] = new Edge{4, 2, nullptr};
-
-    // Чтение графа из внешнего источника (например, файла)
-    read_graph(&g, false);  // Чтениe графа
-    int start = 1;  // Начальная вершина 
-    prim(&g, start);  // Запуск 
-
-    return 0;  
 }

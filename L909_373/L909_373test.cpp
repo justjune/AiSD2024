@@ -5,23 +5,19 @@
 #include <iostream>  // Подключение стандартной библиотеки ввода-вывода
 #include <vector>    // Подключение библиотеки для работы с векторами
 #include <set>       // Подключение библиотеки для работы с множествами
-#include "cont.h"     // Подключение пользовательского заголовочного файла, где реализована функция findSetCover
+#include "L909_373.hpp"     // Подключение пользовательского заголовочного файла, где реализована функция findSetCover
 
 using namespace std; // Использование стандартного пространства имен для упрощения записи
 
 // Функция для ввода множества от пользователя
-set<int> inputSet() {
+set<int> inputSet(int elementCount, int subset_num = 0) {
     set<int> resultSet; // Множество для хранения элементов
-    int elementCount, element;
+    int element;
 
-    // Запрос количества элементов во множестве
-    cout << "Enter the number of elements in the set: ";
-    cin >> elementCount;
 
     // Запрос самих элементов и добавление их в множество
-    cout << "Enter " << elementCount << " elements: ";
-    for (int i = 0; i < elementCount; ++i) {
-        cin >> element;      // Чтение элемента
+    for (int i = subset_num * elementCount; i < elementCount + subset_num * elementCount; ++i) {
+        element = i+1;     // Чтение элемента
         resultSet.insert(element); // Добавление элемента во множество
     }
 
@@ -31,25 +27,23 @@ set<int> inputSet() {
 // Функция для ввода всех подмножеств от пользователя
 vector<set<int>> inputSubsets() {
     vector<set<int>> allSubsets; // Вектор для хранения подмножеств
-    int subsetCount;            // Количество подмножеств
+    int subsetCount = 5;            // Количество подмножеств
 
-    // Запрос количества подмножеств
-    cout << "Enter the number of subsets: ";
-    cin >> subsetCount;
 
     // Цикл для ввода каждого подмножества
     for (int i = 1; i <= subsetCount; ++i) {
-        cout << "Input elements of subset " << i << ":" << endl;
-        allSubsets.push_back(inputSet()); // Чтение подмножества и добавление его в вектор
+        allSubsets.push_back(inputSet(2, i-1)); // Чтение подмножества и добавление его в вектор
     }
 
     return allSubsets; // Возврат вектора подмножеств
 }
 
 int main() {
+
+    cout << "Test: start testint L909_373\n";
     // Ввод универсального множества
     cout << "Provide the universal set U:" << endl;
-    set<int> universalSet = inputSet(); // Считываем универсальное множество
+    set<int> universalSet = inputSet(10); // Считываем универсальное множество
 
     // Ввод подмножеств
     cout << "Now, provide the subsets:" << endl;
@@ -81,6 +75,7 @@ int main() {
         // Если покрытие не найдено, выводим сообщение об ошибке
         cout << "No set cover found. Universal set cannot be covered with the provided subsets." << endl;
     }
+    cout << "Test: test L909_373 finished\n";
 
     return 0; // Завершаем программу
 }

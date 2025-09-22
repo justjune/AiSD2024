@@ -1,5 +1,5 @@
 //Ткаченко Илья ПМ-201
-#include "graph.hpp"
+#include "../graph.hpp"
 #include <iostream>
 #include <vector>
 
@@ -43,21 +43,3 @@ void floyd_warshall(graph *g) {
     }
 }
 
-int main() {
-    graph g;
-    bool directed;
-
-    // Чтение графа
-    std::cout << "Enter the graph (number of vertices, number of edges, list of edges):\n";
-    std::cin >> directed;
-    read_graph(&g, directed);
-
-    // Вывод графа
-    std::cout << "Your count:\n";
-    print_graph(&g);
-
-    // Выполнение алгоритма Флойда-Уоршелла
-    floyd_warshall(&g);
-
-    return 0;
-}

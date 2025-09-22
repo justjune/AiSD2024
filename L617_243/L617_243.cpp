@@ -1,5 +1,5 @@
 //Ткаченко Илья ПМ-201
-#include "graph.hpp"
+#include "../graph.hpp"
 #include <iostream>
 
 // Функция для нахождения ребра между двумя вершинами x и y в графе
@@ -34,36 +34,4 @@ void augment_path(graph* g, int start, int end, int parents[], int volume) {
 
     // Рекурсивно вызываем функцию для родительской вершины
     augment_path(g, start, parents[end], parents, volume);
-}
-
-int main() {
-    graph g;                  // Создаем граф
-    bool directed = false;    // Указываем, что граф неориентированный
-    initialize_graph(&g, directed); // Инициализируем пустой граф
-
-    // Считываем граф от пользователя
-    std::cout << "Enter the number of vertices, number of edges, and edges (format: x y weight):" << std::endl;
-    read_graph(&g, directed);
-
-    int start, end, volume;
-    // Запрашиваем начальную вершину, конечную вершину и объем потока
-    std::cout << "Enter the start and end point, as well as the volume of the flow:" << std::endl;
-    std::cin >> start >> end >> volume;
-
-    int parents[MAXV + 1]; // Массив для хранения пути (родитель каждой вершины)
-    for (int i = 1; i <= g.nvertices; i++) {
-        parents[i] = -1; // Инициализируем массив значением -1
-    }
-
-    // Ищем путь от начальной вершины до конечной (задается вручную)
-    find_path(start, end, parents);
-
-    // Модифицируем веса ребер вдоль пути
-    augment_path(&g, start, end, parents, volume);
-
-    // Выводим обновленный граф
-    std::cout << "Updated graph:" << std::endl;
-    print_graph(&g);
-
-    return 0;
 }
