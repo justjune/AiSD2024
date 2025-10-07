@@ -1,15 +1,7 @@
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=g++
 
-# Определение команды удаления и расширение файла в зависимости от ОС
-ifeq ($(OS),Windows_NT)
-	RM=del
-	EXT=.exe
-else
-	RM=rm
-	EXT=
 
-endif
 
 
 objects=L808_303.o L808_303test.o
@@ -25,4 +17,4 @@ L808_303test.o: L808_303test.cpp L808_303.hpp
 
 .PHONY: clean
 clean:
-	${RM} ${objects} L808_303.exe
+	rm -f ${objects} L808_303.exe

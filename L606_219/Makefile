@@ -1,15 +1,7 @@
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=g++
 
-# Определение команды удаления и расширение файла в зависимости от ОС
-ifeq ($(OS),Windows_NT)
-	RM=del
-	EXT=.exe
-else
-	RM=rm
-	EXT=
 
-endif
 
 
 objects=L606_219.o L606_219test.o graph.o set_union.o
@@ -29,4 +21,4 @@ set_union.o: ../L608_221/set_union.cpp
 
 .PHONY: clean
 clean:
-	${RM} ${objects} L606_219.exe
+	rm -f ${objects} L606_219.exe

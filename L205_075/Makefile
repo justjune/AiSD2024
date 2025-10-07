@@ -2,15 +2,7 @@
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=g++
 
-# Определение команды удаления и расширение файла в зависимости от ОС
-ifeq ($(OS),Windows_NT)
-	RM=del
-	EXT=.exe
-else
-	RM=rm
-	EXT=
 
-endif
 
 
 objects=L205_075.o L205_075test.o
@@ -26,4 +18,4 @@ L205_075test.o: L205_075test.cpp L205_075.hpp
 
 .PHONY: clean
 clean:
-	${RM} ${objects} L205_075.exe
+	rm -f ${objects} L205_075.exe

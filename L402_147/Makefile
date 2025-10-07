@@ -2,15 +2,7 @@
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=g++
 
-# Определение команды удаления и расширение файла в зависимости от ОС
-ifeq ($(OS),Windows_NT)
-	RM=del
-	EXT=.exe
-else
-	RM=rm
-	EXT=
 
-endif
 
 
 objects=L402_147.o L402_147test.o
@@ -26,4 +18,4 @@ L402_147test.o: L402_147test.cpp L402_147.hpp
 
 .PHONY: clean
 clean:
-	${RM} ${objects} L402_147.exe
+	rm -f ${objects} L402_147.exe

@@ -1,15 +1,7 @@
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=g++
 
-# Определение команды удаления и расширение файла в зависимости от ОС
-ifeq ($(OS),Windows_NT)
-	RM=del
-	EXT=.exe
-else
-	RM=rm
-	EXT=
 
-endif
 
 
 objects=L604_217.o L604_217test.o graph.o
@@ -27,4 +19,4 @@ graph.o: ../graph.cpp
 
 .PHONY: clean
 clean:
-	${RM} ${objects} L604_217.exe
+	rm -f ${objects} L604_217.exe
