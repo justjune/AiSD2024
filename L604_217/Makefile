@@ -1,22 +1,40 @@
+
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=g++
 
+FILE_NAME=L604_217
 
+objects=${FILE_NAME}.o ${FILE_NAME}test.o graph.o
+${FILE_NAME}.exe: $(objects)
+	$(CXX) -o ${FILE_NAME}.exe $(objects) 
 
+${FILE_NAME}.o: ${FILE_NAME}.cpp
+	$(CXX) -c ${FILE_NAME}.cpp 
 
-objects=L604_217.o L604_217test.o graph.o
-L604_217.exe: $(objects)
-	$(CXX) -o L604_217.exe $(objects) 
-
-L604_217.o: L604_217.cpp
-	$(CXX) -c L604_217.cpp 
-
-L604_217test.o: L604_217test.cpp L604_217.hpp
-	${CXX} -c L604_217test.cpp
+${FILE_NAME}test.o: ${FILE_NAME}test.cpp ${FILE_NAME}.hpp
+	${CXX} -c ${FILE_NAME}test.cpp
 
 graph.o: ../graph.cpp
 	$(CXX) -c ../graph.cpp
 
-.PHONY: clean
+.PHONY: clean test
+test: ${FILE_NAME}.exe
+	@echo "Running tests..."
+	@if [ "$$OS" = "Windows_NT" ]; then \
+		echo "Windows OS detected"; \
+		old_cp=$$(chcp | sed 's/.*: //'); \
+		echo "Current code page: $$old_cp"; \
+		chcp 65001 > nul; \
+		./${FILE_NAME}.exe; \
+		chcp $$old_cp > nul; \
+		echo "Restored code page: $$old_cp"; \
+	else \
+		echo "Unix-like OS detected"; \
+		./${FILE_NAME}.exe; \
+	fi
+	@$(MAKE) clean
+
+
 clean:
-	rm -f ${objects} L604_217.exe
+	rm -f ${objects} ${FILE_NAME}.exe
+

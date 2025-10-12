@@ -2,19 +2,36 @@
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=g++
 
+FILE_NAME=L201_065
+
+objects=${FILE_NAME}.o ${FILE_NAME}test.o
+${FILE_NAME}.exe: $(objects)
+	$(CXX) -o ${FILE_NAME}.exe $(objects) 
+
+${FILE_NAME}.o: ${FILE_NAME}.cpp
+	$(CXX) -c ${FILE_NAME}.cpp 
+
+${FILE_NAME}test.o: ${FILE_NAME}test.cpp ${FILE_NAME}.hpp
+	${CXX} -c ${FILE_NAME}test.cpp
 
 
-objects=L201_065.o L201_065test.o
-L201_065.exe: $(objects)
-	$(CXX) -o L201_065.exe $(objects) 
+.PHONY: clean test
+test: ${FILE_NAME}.exe
+	@echo "Running tests..."
+	@if [ "$$OS" = "Windows_NT" ]; then \
+		echo "Windows OS detected"; \
+		old_cp=$$(chcp | sed 's/.*: //'); \
+		echo "Current code page: $$old_cp"; \
+		chcp 65001 > nul; \
+		./${FILE_NAME}.exe; \
+		chcp $$old_cp > nul; \
+		echo "Restored code page: $$old_cp"; \
+	else \
+		echo "Unix-like OS detected"; \
+		./${FILE_NAME}.exe; \
+	fi
+	@$(MAKE) clean
 
-L201_065.o: L201_065.cpp
-	$(CXX) -c L201_065.cpp 
 
-L201_065test.o: L201_065test.cpp L201_065.hpp
-	${CXX} -c L201_065test.cpp
-
-
-.PHONY: clean
 clean:
-	rm -f ${objects} L201_065.exe
+	rm -f ${objects} ${FILE_NAME}.exe

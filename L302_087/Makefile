@@ -1,23 +1,37 @@
-ifeq ($(OS),Windows_NT)
-	RM=del
-	EXT=.exe
-else
-	RM=rm
-	EXT=
 
-endif
+# Определение компилятора (gcc для Linux, g++ для Windows)
+CXX=g++
+
+FILE_NAME=L302_087
+
+objects=${FILE_NAME}.o ${FILE_NAME}test.o
+${FILE_NAME}.exe: $(objects)
+	$(CXX) -o ${FILE_NAME}.exe $(objects) 
+
+${FILE_NAME}.o: ${FILE_NAME}.cpp
+	$(CXX) -c ${FILE_NAME}.cpp 
+
+${FILE_NAME}test.o: ${FILE_NAME}test.cpp ${FILE_NAME}.hpp
+	${CXX} -c ${FILE_NAME}test.cpp
 
 
-l302087o=L302_087.o L302_087test.o
-L302087.exe: $(l302087o)
-	$(CXX) -o L302087.exe $(l302087o)
+.PHONY: clean test
+test: ${FILE_NAME}.exe
+	@echo "Running tests..."
+	@if [ "$$OS" = "Windows_NT" ]; then \
+		echo "Windows OS detected"; \
+		old_cp=$$(chcp | sed 's/.*: //'); \
+		echo "Current code page: $$old_cp"; \
+		chcp 65001 > nul; \
+		./${FILE_NAME}.exe; \
+		chcp $$old_cp > nul; \
+		echo "Restored code page: $$old_cp"; \
+	else \
+		echo "Unix-like OS detected"; \
+		./${FILE_NAME}.exe; \
+	fi
+	@$(MAKE) clean
 
-L302_087.o: L302_087.cpp
-	$(CXX) -c L302_087.cpp
 
-L302_087test.o: L302_087test.cpp L302_087.hpp
-	$(CXX) -c L302_087test.cpp
-
-.PHONY: clean
 clean:
-	$(RM) $(objects) $(l302087o) m.exe L302087.exe
+	rm -f ${objects} ${FILE_NAME}.exe

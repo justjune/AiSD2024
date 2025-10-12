@@ -2,18 +2,36 @@
 # Определение компилятора (gcc для Linux, g++ для Windows)
 CXX=g++
 
+FILE_NAME=L110_039
 
-objects=L110_039.o L110_039test.o
-L110_039.exe: $(objects)
-	$(CXX) -o L110_039.exe $(objects) 
+objects=${FILE_NAME}.o ${FILE_NAME}test.o
+${FILE_NAME}.exe: $(objects)
+	$(CXX) -o ${FILE_NAME}.exe $(objects) 
 
-L110_039.o: L110_039.cpp
-	$(CXX) -c L110_039.cpp 
+${FILE_NAME}.o: ${FILE_NAME}.cpp
+	$(CXX) -c ${FILE_NAME}.cpp 
 
-L110_039test.o: L110_039test.cpp L110_039.hpp
-	${CXX} -c L110_039test.cpp
+${FILE_NAME}test.o: ${FILE_NAME}test.cpp ${FILE_NAME}.hpp
+	${CXX} -c ${FILE_NAME}test.cpp
 
 
-.PHONY: clean
+.PHONY: clean test
+test: ${FILE_NAME}.exe
+	@echo "Running tests..."
+	@if [ "$$OS" = "Windows_NT" ]; then \
+		echo "Windows OS detected"; \
+		old_cp=$$(chcp | sed 's/.*: //'); \
+		echo "Current code page: $$old_cp"; \
+		chcp 65001 > nul; \
+		./${FILE_NAME}.exe; \
+		chcp $$old_cp > nul; \
+		echo "Restored code page: $$old_cp"; \
+	else \
+		echo "Unix-like OS detected"; \
+		./${FILE_NAME}.exe; \
+	fi
+	@$(MAKE) clean
+
+
 clean:
-	rm -f ${objects} L110_039.exe
+	rm -f ${objects} ${FILE_NAME}.exe
