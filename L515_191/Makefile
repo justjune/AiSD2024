@@ -23,21 +23,44 @@ graph.o: ../graph.cpp
 .PHONY: clean test
 test: ${FILE_NAME}.exe
 	@echo "Running tests..."
-	@if [ "$$OS" = "Windows_NT" ]; then \
-		echo "Windows OS detected"; \
-		old_cp=$$(chcp | sed 's/.*: //'); \
-		echo "Current code page: $$old_cp"; \
-		chcp 65001 > nul; \
-		./${FILE_NAME}.exe; \
-		chcp $$old_cp > nul; \
-		echo "Restored code page: $$old_cp"; \
+ifeq ($(OS),Windows_NT)
+	@echo "Windows OS detected"
+	@if command -v pwsh >/dev/null 2>&1; then \
+		echo "Using PowerShell Core"; \
+		pwsh -Command " \
+			$$oldOut = [Console]::OutputEncoding; \
+			[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; \
+			Write-Host 'Old output encoding: ' $$oldOut.EncodingName; \
+			Write-Host 'New output encoding: ' [Console]::OutputEncoding.EncodingName; \
+			.\${FILE_NAME}.exe; \
+			[Console]::OutputEncoding = $$oldOut; \
+			Write-Host 'Encoding restored'"; \
+	elif command -v powershell >/dev/null 2>&1; then \
+		echo "Using Windows PowerShell"; \
+		powershell -Command " \
+			$$oldOut = [Console]::OutputEncoding; \
+			[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; \
+			Write-Host 'Old output encoding: ' $$oldOut.EncodingName; \
+			Write-Host 'New output encoding: ' [Console]::OutputEncoding.EncodingName; \
+			.\${FILE_NAME}.exe; \
+			[Console]::OutputEncoding = $$oldOut; \
+			Write-Host 'Encoding restored'"; \
 	else \
-		echo "Unix-like OS detected"; \
+		echo "PowerShell not found, running directly (Russian text may not display correctly)"; \
 		./${FILE_NAME}.exe; \
 	fi
+else
+	@echo "Unix-like OS detected"
+	@./${FILE_NAME}.exe
+endif
 	@$(MAKE) clean
 
 
 clean:
-	rm -f ${objects} ${FILE_NAME}.exe
-
+ifeq ($(OS),Windows_NT)
+	@echo "Cleaning Windows..."
+	@cmd //c "del /Q ${objects} ${FILE_NAME}.exe 2>nul" || true
+else
+	@echo "Cleaning Unix..."
+	@rm -f ${objects} ${FILE_NAME}.exe
+endif
