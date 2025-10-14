@@ -25,21 +25,7 @@ test: ${FILE_NAME}.exe
 	@echo "Running tests..."
 ifeq ($(OS),Windows_NT)
 	@echo "Windows OS detected"
-	@where pwsh >nul 2>&1 && ( \
-    	echo "Using PowerShell Core" && \
-    	pwsh -Command " \
-      		$$oldOut = [Console]::OutputEncoding; \
-      		[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; \
-      		$$newOut = [Console]::OutputEncoding; \
-      		Write-Host 'Old output encoding: ' $$oldOut.EncodingName; \
-      		Write-Host 'New output encoding: ' $$newOut.EncodingName; \
-      		.\${FILE_NAME}.exe; \
-      		[Console]::OutputEncoding = $$oldOut; \
-      		$$restoredOut = [Console]::OutputEncoding; \
-      		Write-Host 'Encoding restored'; \
-      	Write-Host 'Restored output encoding: ' $$restoredOut.EncodingName" \
-  	) || \
-	where powershell >nul 2>&1 && ( \
+	@where powershell >nul 2>&1 && ( \
 		echo "Using Windows PowerShell" && \
 		powershell -Command " \
 			$$oldOut = [Console]::OutputEncoding; \
