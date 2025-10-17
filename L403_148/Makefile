@@ -23,22 +23,13 @@ test: ${FILE_NAME}.exe
 	@echo "Running tests..."
 ifeq ($(OS),Windows_NT)
 	@echo "Windows OS detected"
-	@where powershell >nul 2>&1 && ( \
-		echo "Using Windows PowerShell" && \
-		powershell -Command " \
-			$$oldOut = [Console]::OutputEncoding; \
-			[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; \
-			$$newOut = [Console]::OutputEncoding; \
-			Write-Host 'Old output encoding: ' $$oldOut.EncodingName; \
-			Write-Host 'New output encoding: ' $$newOut.EncodingName; \
-			.\${FILE_NAME}.exe; \
-			[Console]::OutputEncoding = $$oldOut; \
-			$$restoredOut = [Console]::OutputEncoding; \
-			Write-Host 'Encoding restored'; \
-			Write-Host 'Restored output encoding: ' $$restoredOut.EncodingName" \
-	) || \
-	echo "PowerShell not found, running directly (Russian text may not display correctly)" && \
-		./${FILE_NAME}.exe
+	@for /f "tokens=4" %%i in ('chcp') do set OLD_CP=%%i & \
+    	echo Current code page: %%i & \
+    	echo Change code page to UTF-8 & \
+    	chcp 65001 & \
+    	${FILE_NAME}.exe & \
+    	chcp %%i > nul & \
+    	echo Restored code page: %%i
 else
 	@echo "Unix-like OS detected"
 	@./${FILE_NAME}.exe
@@ -49,8 +40,7 @@ endif
 clean:
 ifeq ($(OS),Windows_NT)
 	@echo "Cleaning Windows..."
-	@del /Q ${objects} ${FILE_NAME}.exe > nul || \
-	rm -f ${objects} ${FILE_NAME}.exe
+	@del /Q ${objects} ${FILE_NAME}.exe
 else
 	@echo "Cleaning Unix-like..."
 	@rm -f ${objects} ${FILE_NAME}.exe
