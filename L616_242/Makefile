@@ -36,7 +36,7 @@ endif
 clean:
 ifeq ($(OS),Windows_NT)
 	@echo "Cleaning Windows..."
-	@del /Q ${objects} ${FILE_NAME}.exe
+	@del /Q ${objects} ${FILE_NAME}.exe || rm -f ${objects} ${FILE_NAME}.exe
 else
 	@echo "Cleaning Unix-like..."
 	@rm -f ${objects} ${FILE_NAME}.exe
